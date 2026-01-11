@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillShare Meeting Portal</title>
+<title>SkillShare Video Meetings</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -14,257 +12,269 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#2b8cee",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#011638", // Custom background from user request
-                        "surface": "#364156", // Custom surface color
-                        "muted-text": "#CDCDCD", // Custom text color
+                        "primary": "#011637",
+                        "secondary": "#364156",
                         "accent-light": "#DFF8EB",
                         "accent-dark": "#122B1D",
+                        "text-muted": "#CDCDCD",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
                     },
                     fontFamily: {
-                        "display": ["Lexend", "sans-serif"]
+                        "display": ["Lexend"]
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
                 },
             },
         }
     </script>
-<style>
+<style type="text/tailwindcss">
         body {
             font-family: 'Lexend', sans-serif;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        .sidebar-active {
+            background-color: #364156;
+            color: #DFF8EB;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #364156;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-muted-text min-h-screen">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
 <div class="flex h-screen overflow-hidden">
-<!-- SideNavBar -->
-<aside class="w-64 flex flex-col border-r border-surface/30 bg-background-light dark:bg-background-dark p-4 shrink-0">
-<div class="flex flex-col h-full justify-between">
-<div class="flex flex-col gap-8">
-<div class="flex gap-3 items-center px-2">
-<div class="bg-primary rounded-lg p-2 text-white">
-<span class="material-symbols-outlined">school</span>
+<aside class="w-64 flex-shrink-0 bg-primary border-r border-secondary/30 hidden md:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 text-accent-light">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
 </div>
-<div class="flex flex-col">
-<h1 class="text-slate-900 dark:text-white text-base font-bold leading-none">SkillShare</h1>
-<p class="text-slate-500 dark:text-muted-text/60 text-xs mt-1">Professional Portal</p>
+<h1 class="text-xl font-bold tracking-tight text-white">SkillShare</h1>
 </div>
-</div>
-<nav class="flex flex-col gap-2">
-<div class="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-surface/10 dark:hover:bg-surface/50 text-slate-700 dark:text-muted-text">
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
 <span class="material-symbols-outlined">dashboard</span>
-<p class="text-sm font-medium">Dashboard</p>
-</div>
-<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-surface text-primary dark:text-white">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">video_camera_front</span>
-<p class="text-sm font-medium">Meetings</p>
-</div>
-<div class="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-surface/10 dark:hover:bg-surface/50 text-slate-700 dark:text-muted-text">
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
 <span class="material-symbols-outlined">chat</span>
-<p class="text-sm font-medium">Messages</p>
-</div>
-<div class="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-surface/10 dark:hover:bg-surface/50 text-slate-700 dark:text-muted-text">
-<span class="material-symbols-outlined">menu_book</span>
-<p class="text-sm font-medium">Courses</p>
-</div>
-<div class="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-surface/10 dark:hover:bg-surface/50 text-slate-700 dark:text-muted-text">
-<span class="material-symbols-outlined">person</span>
-<p class="text-sm font-medium">Profile</p>
-</div>
+                Chat
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">groups</span>
+                Community
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                Calendar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+                Trending
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">handshake</span>
+                Matches
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active text-sm font-medium" href="#">
+<span class="material-symbols-outlined">videocam</span>
+                Meeting
+            </a>
 </nav>
+<div class="p-4 space-y-4">
+<button class="w-full bg-accent-dark border border-accent-light/20 text-accent-light py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-accent-dark/80 transition-all">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                Start Lesson
+            </button>
+<div class="pt-4 border-t border-secondary/30">
+<div class="flex items-center gap-3 px-4 py-2 text-text-muted text-sm cursor-pointer hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </div>
+<div class="flex items-center gap-3 px-4 py-2 text-red-400 text-sm cursor-pointer hover:text-red-300 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </div>
 </div>
-<button class="w-full py-2.5 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-bold transition-colors">
-                    Upgrade Plan
-                </button>
 </div>
 </aside>
-<!-- Main Content Area -->
-<main class="flex-1 flex flex-col overflow-y-auto">
-<!-- TopNavBar -->
-<header class="flex items-center justify-between border-b border-surface/30 px-8 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-10">
-<div class="flex items-center gap-4 text-slate-900 dark:text-white">
-<h2 class="text-lg font-bold tracking-tight">Meeting Portal</h2>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 flex items-center justify-between px-8 bg-background-light dark:bg-background-dark border-b border-secondary/20">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-secondary/10 dark:bg-secondary/20 border-none rounded-xl pl-10 pr-4 py-2 focus:ring-2 focus:ring-accent-light/30 text-sm" placeholder="Search for meetings or mentors..." type="text"/>
+</div>
 </div>
 <div class="flex items-center gap-6">
-<div class="relative w-64">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-<input class="w-full bg-slate-100 dark:bg-surface border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary outline-none dark:text-white dark:placeholder:text-muted-text/50" placeholder="Search sessions..."/>
-</div>
 <div class="flex gap-2">
-<button class="p-2 rounded-lg bg-slate-100 dark:bg-surface text-slate-600 dark:text-muted-text hover:text-primary transition-colors">
+<button class="p-2 rounded-xl bg-secondary/10 dark:bg-secondary/20 text-text-muted hover:text-white transition-colors">
 <span class="material-symbols-outlined">notifications</span>
 </button>
-<button class="p-2 rounded-lg bg-slate-100 dark:bg-surface text-slate-600 dark:text-muted-text hover:text-primary transition-colors">
-<span class="material-symbols-outlined">settings</span>
+<button class="p-2 rounded-xl bg-secondary/10 dark:bg-secondary/20 text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
 </button>
 </div>
-<div class="h-10 w-10 rounded-full border-2 border-primary/20 p-0.5">
-<div class="h-full w-full rounded-full bg-cover bg-center" data-alt="User profile avatar close up" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAPedcwklEfc2EuY0I1V11dMDbjmSu1nBRQRm6RjI1m4ckBwV0KMJIqJxljKtPtzAXThWyWXz0XAzl2Di_H2FiZuif9nMZs3BdQexfJFEfv7veDxI774hEpMTN7aASlKVjzbXXfpAvXtHGe__9ICKfkSvp5IM7U2SbczsWZvtihbJLbB_UAUeeDBvfOw-rGJhZ_ju9P9AeX2S3ZZXNxT-rdqgDgCR8lxuxJTrMBky0ZmJUrgDx11t6vRyW3UPRBrrflGBshA7IPUw')"></div>
+<div class="flex items-center gap-3 pl-4 border-l border-secondary/20">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold">Alex Sterling</p>
+<p class="text-xs text-text-muted leading-none">Pro Learner</p>
+</div>
+<div class="size-10 rounded-full bg-center bg-cover border-2 border-accent-light/30" data-alt="Portrait of a professional learner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqROXZ86Nfcd8H0sb5johQAH-6dXtxNKzkYUfdKx8yPr5GkhGFLPfAGjSqVxerqZhG9bfCc8_EkumBLwceiu15QS5J9u8zPnOJOtpKAt6FYpAI4t8GpMrlfUoArmKW-P7DtJK1jA19aI94pzP2ld7Xwr00l-KG2QARO6WYdFSkJk7JFCW-NMeeum35O0DR3g2hVJuPrH0xtokHOsycaNVwfHSVS2DXMfN_yIbpzKudIeFN9SeS7EC9XsvLFw3Jp3HLartLOff-20M')"></div>
 </div>
 </div>
 </header>
-<!-- Page Content -->
-<div class="p-8 max-w-6xl mx-auto w-full">
-<!-- Breadcrumbs -->
-<nav class="flex items-center gap-2 mb-6">
-<a class="text-slate-500 dark:text-muted-text/60 text-sm hover:text-primary" href="#">Dashboard</a>
-<span class="material-symbols-outlined text-sm text-slate-400">chevron_right</span>
-<span class="text-slate-900 dark:text-white text-sm font-medium">Meetings</span>
-</nav>
-<!-- PageHeading -->
-<div class="flex flex-col gap-2 mb-10">
-<h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Meetings</h1>
-<p class="text-slate-500 dark:text-muted-text/70 text-lg">Manage your skill-sharing sessions and video calls</p>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar bg-[#011638]">
+<div class="max-w-5xl mx-auto">
+<div class="mb-10 text-center lg:text-left">
+<h2 class="text-4xl font-black tracking-tight text-white mb-2">Video Meetings</h2>
+<p class="text-text-muted">Join your team, mentors, or students in high-quality video calls.</p>
 </div>
-<!-- Hero Join/Start Panel -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-<!-- Start New Meeting -->
-<div class="bg-primary/5 dark:bg-surface/30 border border-primary/20 p-8 rounded-xl flex flex-col items-start gap-4 hover:border-primary/40 transition-all">
-<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mb-2">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+<div class="bg-primary border border-secondary/30 rounded-2xl p-8 flex flex-col justify-between">
+<div>
+<div class="size-12 bg-accent-light/10 text-accent-light rounded-xl flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">video_call</span>
 </div>
-<h3 class="text-2xl font-bold dark:text-white">Start New Meeting</h3>
-<p class="text-slate-500 dark:text-muted-text/70 mb-2">Create an instant Google Meet link and invite participants.</p>
-<button class="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all transform active:scale-95">
-<span>Start Instant Meeting</span>
-<span class="material-symbols-outlined text-sm">open_in_new</span>
-</button>
+<h3 class="text-2xl font-bold text-white mb-2">Start a New Meeting</h3>
+<p class="text-text-muted mb-8 text-sm leading-relaxed">Create a unique link and invite others to join your session instantly.</p>
 </div>
-<!-- Join Meeting -->
-<div class="bg-slate-50 dark:bg-surface/30 border border-slate-200 dark:border-surface p-8 rounded-xl flex flex-col gap-4">
-<div class="w-12 h-12 bg-slate-200 dark:bg-surface rounded-lg flex items-center justify-center text-slate-700 dark:text-muted-text mb-2">
+<button class="w-full bg-accent-light text-primary py-4 rounded-xl font-bold text-base hover:brightness-110 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">add_circle</span>
+                            New Meeting
+                        </button>
+</div>
+<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-8">
+<div class="size-12 bg-secondary/30 text-text-muted rounded-xl flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-3xl">keyboard</span>
 </div>
-<h3 class="text-2xl font-bold dark:text-white">Join Meeting</h3>
-<p class="text-slate-500 dark:text-muted-text/70 mb-2">Enter the meeting code or link shared by your instructor.</p>
-<div class="flex gap-2 w-full">
-<input class="flex-1 bg-white dark:bg-background-dark border border-slate-200 dark:border-surface rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none text-slate-900 dark:text-white dark:placeholder:text-muted-text/30" placeholder="e.g. abc-defg-hij"/>
-<button class="px-6 py-3 bg-slate-800 dark:bg-muted-text text-white dark:text-background-dark font-bold rounded-lg hover:opacity-90 transition-all">
-                                Join
-                            </button>
+<h3 class="text-2xl font-bold text-white mb-2">Join with Code</h3>
+<p class="text-text-muted mb-6 text-sm">Enter a meeting code or link shared by a mentor or peer.</p>
+<div class="flex gap-3">
+<input class="flex-1 bg-secondary/20 border-secondary/40 rounded-xl text-white placeholder:text-text-muted/50 focus:ring-accent-light focus:border-accent-light py-4 px-4 font-mono" placeholder="e.g. abc-defg-hij" type="text"/>
+<button class="px-8 bg-secondary/50 text-white font-bold rounded-xl border border-secondary/30 hover:bg-secondary transition-colors">Join</button>
 </div>
 </div>
 </div>
-<!-- HeadlineText -->
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                        Upcoming Calls
-                        <span class="px-2 py-0.5 bg-accent-dark text-accent-light text-xs rounded-full border border-accent-light/20">3 Scheduled</span>
-</h3>
-<button class="text-sm font-medium text-primary hover:underline flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">sync</span>
-                        Sync with Google Calendar
-                    </button>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white">Upcoming Calls</h3>
+<button class="text-accent-light text-sm font-semibold hover:underline">See full calendar</button>
 </div>
-<!-- Upcoming Calls List -->
-<div class="space-y-4">
-<!-- Meeting Card 1 (Live Now) -->
-<div class="group relative bg-white dark:bg-surface border border-slate-200 dark:border-transparent hover:border-primary/50 p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all hover:shadow-xl">
-<div class="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-12 bg-accent-light rounded-full"></div>
-<div class="flex items-center gap-5 w-full md:w-auto">
-<div class="relative">
-<div class="h-16 w-16 rounded-xl bg-cover bg-center ring-4 ring-accent-dark/30" data-alt="Instructor portrait Sarah J." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDw7UbMLkxKZHQULfWJYhpsMHnqBnqQAFyrYZGgbv7pENqMFuywZ-nNXJDyFcr-DwGheuGe-V32SdlBZqQVYH7yKvltCsmx1XVhMC1Yl500_4p-uPr0UElJovG03Rlfs8gsxi72GLL82lSNdtGLKLyxXEWvGF6WnbSRI9fMH6YPDysylnArE6US6xva5ujKx8NTllk7P5IJQFkjQL6NVU3XwrXc7_dFqHlypmx14SxFxrvDyPDw35LuMfZZBEN9wb4Wikl8Xbf5pWI')"></div>
-<div class="absolute -bottom-1 -right-1 bg-accent-light text-accent-dark p-1 rounded-md">
-<span class="material-symbols-outlined text-xs font-bold">sensors</span>
+<div class="grid gap-4">
+<div class="bg-primary/50 border border-secondary/20 rounded-xl p-5 hover:border-accent-light/30 transition-all group">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 flex-1">
+<div class="size-14 rounded-xl bg-accent-dark border border-accent-light/10 flex flex-col items-center justify-center shrink-0">
+<p class="text-[10px] font-bold text-accent-light/60 uppercase">Now</p>
+<span class="material-symbols-outlined text-accent-light animate-pulse">videocam</span>
 </div>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2 mb-1">
-<span class="px-2 py-0.5 bg-accent-light/10 text-accent-light text-[10px] font-bold uppercase tracking-wider rounded">Live Now</span>
-<span class="text-xs text-slate-400 dark:text-muted-text/50">#design-systems</span>
-</div>
-<h4 class="font-bold text-lg text-slate-900 dark:text-white">Advanced React Hooks with Sarah J.</h4>
-<p class="text-sm text-slate-500 dark:text-muted-text/70 flex items-center gap-1 mt-1">
-<span class="material-symbols-outlined text-xs">schedule</span>
-                                    10:00 AM - 11:30 AM
-                                </p>
-</div>
-</div>
-<div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-<div class="flex -space-x-2">
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-cover" data-alt="Attendee avatar 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0WewA5zncLh-AbY-tA1Pc2W3lMB-lhVwFBxAVdZdU9RQCEVlnrcTjkzESfllkEOozi8Etl6E73SGUfrq32GpbHVUwwR4r41yV0rfGo3UgaBu4QM4YxNC1Oke3I37aEydM8WjpRcCUpBY3bKrBLPfH4o7DvCbyVlFm9JPrmSJRmB3InF1WY8nLs-8H0Pdj7c2YugaqRHcj52qnqBrw7icHoJnQrqEJWXk88JlUZOL8TBf01PayNmSQGs7gOwLuLTr0kIrGOzHwGFo')"></div>
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-cover" data-alt="Attendee avatar 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIUL91b2xGCuxjTwTceXifOvSU7Z4soOlv1TRJxv2QC4ydqBpTFs6wPeHVsx3fawV2owDTu41hC0p_egJeCzkPukgLcPnRGzqeKVXQe7VI5ytB-V3GXkMhqVO5egNOowkM9Mmr74kLRI8-RwwYtENW7za2QJJXzUYWIuY6wF_LSGvMbb750-RbhHse3TqDQdHvy3jfOfP14Zolp8LYi9tyP-YgUHnHC5Jp5J1pzftzqmcOgXiUQGjF_IwMpS9Ko3O36Zj6kLEYc2o')"></div>
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] text-white font-bold">+12</div>
-</div>
-<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 transition-all">
-<span>Join Now</span>
-<span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Meeting Card 2 -->
-<div class="group bg-white dark:bg-surface/40 border border-slate-200 dark:border-surface/50 p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all hover:bg-surface/60">
-<div class="flex items-center gap-5 w-full md:w-auto">
-<div class="h-16 w-16 rounded-xl bg-cover bg-center" data-alt="Instructor portrait Mike Ross" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGEytawAq2Z4ZhmOVCgB_QFgm6P7b9--MOXmLtT3hnyjsuwhrIrzij1BMq4pE4OfFDy65W31UFhGt-p42Sk6JIbSJoS_mouh-oJVpz4GudY8W98ueoJWAgjZpMzEbgcLoOoOn0Qi1zgEQf4tLfuz4LJUj1m3QbNTp8DBUhCQ1M_iiEPgA5BottCp4SUcb9OMnRwxbFvpLVlZOrtO6DadZaPOuOlKBezO6LGOokWvBRvXFEJdpfIQGgFEzL6oFJ-kZ97LpM1lVtgwo')"></div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2 mb-1">
-<span class="px-2 py-0.5 bg-slate-200 dark:bg-background-dark text-slate-500 dark:text-muted-text/50 text-[10px] font-bold uppercase tracking-wider rounded">Today</span>
-<span class="text-xs text-slate-400 dark:text-muted-text/50">#ux-review</span>
-</div>
-<h4 class="font-bold text-lg text-slate-900 dark:text-white">UX Portfolio Review with Mike Ross</h4>
-<p class="text-sm text-slate-500 dark:text-muted-text/70 flex items-center gap-1 mt-1">
-<span class="material-symbols-outlined text-xs">schedule</span>
-                                    2:30 PM - 3:00 PM
-                                </p>
-</div>
-</div>
-<div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-<div class="flex -space-x-2">
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-cover" data-alt="Attendee avatar 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzCvTWzYJx3QKErAWR_SZamwCvPxo9xHSwZjO13krlcqnRBJu1i1rsEocxunSgFtKoIN9D-Hoi321VN90drhxeEBrNkiCqEVL2QXSLkBsdkyQXEiUcsq1VQg_fHiuGGB0Y50z4qteirXUTA_8ybZsej6P8xoBKvMXF5JRxpjJ6uPOMMVNX2d-aH0i4uZuG56YTvZ2AtimoyHvVSlzM_zqKNlAAymATZU2oYAcUIONHCyLkBNNJeFjBa4EPueE8q2jDnZbsH7lYcVo')"></div>
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] text-white font-bold">+2</div>
-</div>
-<button class="bg-slate-200 dark:bg-background-dark text-slate-700 dark:text-muted-text px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 hover:bg-slate-300 dark:hover:bg-background-dark/50 transition-all">
-<span>Prepare</span>
-<span class="material-symbols-outlined text-sm">edit_note</span>
-</button>
-</div>
-</div>
-<!-- Meeting Card 3 -->
-<div class="group bg-white dark:bg-surface/40 border border-slate-200 dark:border-surface/50 p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all hover:bg-surface/60">
-<div class="flex items-center gap-5 w-full md:w-auto">
-<div class="h-16 w-16 rounded-xl bg-cover bg-center" data-alt="Instructor portrait Elena V." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEldyuPwu5xypfqdcwxfVGLMjv3oxnhvoXh72HWTZU2SvvaGxHZ4t2AdLWYmLudG6TbJxGLM7pR31e3gP-BTcPXN-9YQQ8i2oLM9thyggce-t-QwJXxaftFG1Yj5Uh3Yo30IffvXO7tYr1hul6kECR7F-zKvHs5q-0NFlJPN5fIBrG4gIy7UMvFE8cdoTUyr1zbgY2MOt_eR44yVQhn3tPjaOVaqnbkyi_JX1_HZDBGZwMZ0IYH4LdOdZDhKytduIzUKBuDSaSAtI')"></div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2 mb-1">
-<span class="px-2 py-0.5 bg-slate-200 dark:bg-background-dark text-slate-500 dark:text-muted-text/50 text-[10px] font-bold uppercase tracking-wider rounded">Tomorrow</span>
-<span class="text-xs text-slate-400 dark:text-muted-text/50">#web-performance</span>
-</div>
-<h4 class="font-bold text-lg text-slate-900 dark:text-white">Web Vitals Workshop</h4>
-<p class="text-sm text-slate-500 dark:text-muted-text/70 flex items-center gap-1 mt-1">
-<span class="material-symbols-outlined text-xs">schedule</span>
-                                    09:00 AM - 10:30 AM
-                                </p>
-</div>
-</div>
-<div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-<div class="flex -space-x-2">
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-cover" data-alt="Attendee avatar 4" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjsVxRIDAwDgFJpsjfdSk4mHjfmYByLn_RsgApThE5oXp60jMHUpM1A2DUCwCid2AhazxjVvJDMla8_EfewoH_7FwyPWPZQ65SJwBw93rTVqSjKEppzUkRfpTKFTaC-VjkkwzrejqM2HIpK0VruT0x9Wn3r86TD0vtRM4SX6h3N1e2Do0VjvOLIbUc3vjx_00xjR_ScKnGVPT5SqoPHCLEaSkKQlS6nvXAIwisI5pyVyC0cspYQ7fMcTY4hiHAzF7JL38lN6WK8t4')"></div>
-<div class="h-8 w-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] text-white font-bold">+8</div>
-</div>
-<button class="bg-slate-200 dark:bg-background-dark text-slate-700 dark:text-muted-text px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 hover:bg-slate-300 dark:hover:bg-background-dark/50 transition-all">
-<span>View Details</span>
-<span class="material-symbols-outlined text-sm">visibility</span>
-</button>
+<div class="min-w-0">
+<h4 class="text-lg font-bold text-white truncate group-hover:text-accent-light transition-colors">Advanced UI Design Systems</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="size-5 rounded-full bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRB6N3CadIONlWK78f0xQKy01Ga7FAzqNe12_dJLRY6AwxA8vvlj6U54cTmrU2hrlOV1z2sBpm9MmHVRkqfB7uwyC-ubtVlHvyhcuLpr3ZDdtKHDLcTbpAB3lcsMPOZUqIVtlY5R0g5dpnCUtfUD-cMeuv73L3rHwuYtTI8dZMcCU-RO0OUmBDUlA3AZimjqy_Mi2sv14JV6PEQqklEM_mII_S07clRYP1Ev69boUyajhIRRDDI-4aGDw-SjKDvwHtUUKbq35ouUw')"></div>
+<p class="text-sm text-text-muted">Mentor: <span class="text-white">Elena G.</span></p>
+<span class="text-text-muted/30">•</span>
+<p class="text-sm text-text-muted">10:00 AM - 11:30 AM</p>
 </div>
 </div>
 </div>
-<!-- Google Meet Branding Footer -->
-<div class="mt-12 flex flex-col items-center gap-4 py-8 border-t border-surface/20">
-<div class="flex items-center gap-2 opacity-60">
-<svg class="w-6 h-6" viewbox="0 0 24 24">
-<path d="M24 7.6v11.4c0 1.1-.9 2-2 2h-11.4L24 7.6z" fill="#EA4335"></path>
-<path d="M0 7.6V5c0-1.1.9-2 2-2h2.6L0 7.6z" fill="#FBBC04"></path>
-<path d="M0 7.6L4.6 12 0 16.4V7.6z" fill="#34A853"></path>
-<path d="M2 3h15.4l-4.6 4.6H2c-1.1 0-2-.9-2-2V3z" fill="#4285F4"></path>
-<path d="M0 16.4l10.6 10.6V21c0-1.1-.9-2-2-2H2.6L0 16.4z" fill="#188038"></path>
-</svg>
-<span class="text-sm font-medium dark:text-muted-text/50">Powered by Google Meet integration</span>
+<div class="flex items-center gap-4 shrink-0">
+<div class="bg-accent-dark text-accent-light px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 border border-accent-light/20">
+                                        Starting In: <span class="font-mono text-base">02:45</span>
+</div>
+<button class="px-6 py-2.5 bg-accent-light text-primary rounded-lg font-bold text-sm hover:brightness-110">Join Now</button>
+</div>
+</div>
+</div>
+<div class="bg-primary/50 border border-secondary/20 rounded-xl p-5 hover:border-white/20 transition-all">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 flex-1">
+<div class="size-14 rounded-xl bg-secondary/20 border border-secondary/30 flex flex-col items-center justify-center shrink-0">
+<p class="text-[10px] font-bold text-text-muted uppercase">Today</p>
+<p class="text-lg font-black text-white">2 PM</p>
+</div>
+<div class="min-w-0">
+<h4 class="text-lg font-bold text-white truncate">Weekly Peer Review Session</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="size-5 rounded-full bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEPlXnUXrnZNbGnX5oMtc6Ehm912f3Yc8GiNI2ga9zHwMHpjKcW7MwXpnd3wzaysABJ-qhhn3ifQXO2ed2DrVlGJ6_I5my5zKo1d7ryI9ffC3_n0nL-4XNQmoGeJmc30xTVldecDCI7xYyEYgl8qCoj-FIaaTgLwr-NWacm450-dyrgycswCua4AD9nvBRomuV4OGPF9YM-xUxZuapdtNl52sHRpG1bR0VxrVDorJqxbzT_HCnIexy85zgo_5zNQtaUKW1rTYkTRk')"></div>
+<p class="text-sm text-text-muted">Host: <span class="text-white">David R.</span></p>
+<span class="text-text-muted/30">•</span>
+<p class="text-sm text-text-muted">02:00 PM - 03:00 PM</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<div class="bg-secondary/20 text-text-muted px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+                                        Starting In: <span class="font-mono text-base">04:12:30</span>
+</div>
+<button class="px-6 py-2.5 border border-secondary/50 text-text-muted rounded-lg font-bold text-sm cursor-not-allowed">Join Later</button>
+</div>
+</div>
+</div>
+<div class="bg-primary/50 border border-secondary/20 rounded-xl p-5 hover:border-white/20 transition-all opacity-80">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 flex-1">
+<div class="size-14 rounded-xl bg-secondary/20 border border-secondary/30 flex flex-col items-center justify-center shrink-0">
+<p class="text-[10px] font-bold text-text-muted uppercase">Oct 15</p>
+<p class="text-lg font-black text-white">4 PM</p>
+</div>
+<div class="min-w-0">
+<h4 class="text-lg font-bold text-white truncate">Kubernetes Architecture Deep Dive</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="size-5 rounded-full bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCljASp5uRVpWvPOr_w1VoU3bbHHmo7Zp_ZW_Y5JpOxXXdm4L6UyAJjpLJvVDSVMHh-FI68cDMPYC2FezLSwHkwawtOMVjB-euCRO3EaB5CdEA6kssZ6bKdY8Eh46qJn5DxfABRaFEqIAVWujtpFh3LQSICQBXz4WsKD_dZ-mEWwymLr0jp9N_t3wy8QwBjpNhdJ8lS2UgE0O7a4WUXS8X0Nhp7-ucWOPqq6cLCVcmypTrz4kVMtgV7KHOKS3D35hA_3ib0SMUKwBI')"></div>
+<p class="text-sm text-text-muted">Mentor: <span class="text-white">Julian V.</span></p>
+<span class="text-text-muted/30">•</span>
+<p class="text-sm text-text-muted">04:00 PM - 05:30 PM</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<div class="bg-secondary/20 text-text-muted px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+                                        Starts in: 2 days
+                                    </div>
+<button class="px-6 py-2.5 border border-secondary/50 text-text-muted rounded-lg font-bold text-sm">Add to Calendar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-accent-dark/30 border border-accent-light/10 p-6 rounded-2xl">
+<span class="material-symbols-outlined text-accent-light mb-3">mic</span>
+<h4 class="font-bold text-white mb-2">Check Audio</h4>
+<p class="text-xs text-text-muted">Ensure your microphone is working before joining to avoid interruptions.</p>
+</div>
+<div class="bg-accent-dark/30 border border-accent-light/10 p-6 rounded-2xl">
+<span class="material-symbols-outlined text-accent-light mb-3">screen_share</span>
+<h4 class="font-bold text-white mb-2">Present Easily</h4>
+<p class="text-xs text-text-muted">Use the desktop app for the best screen sharing performance and quality.</p>
+</div>
+<div class="bg-accent-dark/30 border border-accent-light/10 p-6 rounded-2xl">
+<span class="material-symbols-outlined text-accent-light mb-3">security</span>
+<h4 class="font-bold text-white mb-2">Secure Rooms</h4>
+<p class="text-xs text-text-muted">All SkillShare meetings are end-to-end encrypted for your privacy.</p>
+</div>
 </div>
 </div>
 </div>
 </main>
 </div>
+
 </body></html>
