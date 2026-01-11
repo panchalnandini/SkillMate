@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillShare Calendar View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#CDCDCD",
+                        "background-dark": "#011638",
+                        "slate-custom": "#364156",
+                        "mint-custom": "#DFF8EB",
+                        "deep-green": "#122B1D",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            min-height: 600px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-custom dark:text-mint-custom min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-[#364156] dark:bg-[#364156]/20 border-r border-white/10 flex flex-col h-screen">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-none">SkillShare</h1>
+<p class="text-white/60 text-xs font-medium">Pro Dashboard</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 text-white/70 hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-white/70 hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">book_4</span>
+<span class="text-sm font-medium">Courses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-white rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-white/70 hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">Messages</span>
+<span class="ml-auto bg-primary text-[10px] px-1.5 py-0.5 rounded-full">4</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-white/70 hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Mentors</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-white/10">
+<a class="flex items-center gap-3 px-3 py-2 text-white/70 hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User profile avatar circle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfkSvw_wWpt4g0M3CpMYNHPxjE0hLAjnce6NMH56kPIhPU9WC0LruypS8d3R7plkvjXXYLGX-uFZZ5F0bsjlCQjKRnyIIws66uecy2t0Aa2l1e-o3hKhbof20I8j-ywqoZ5egRmhKneg008IwqFIh35uHxlAX940Xn6ewY7COrUPYLtXlvv7m5emVSKUNdVC_z6hn4VCnS8abOJk9ATZonMIfYF5V_mGH_-zEn-BoovsS8P1DV_lwGeMOZzqViaay2IPpHVcvtexA')"></div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-white text-sm font-medium truncate">Alex Johnson</p>
+<p class="text-white/40 text-xs truncate">Premium Member</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- Top Navigation Bar -->
+<header class="h-16 border-b border-white/10 px-8 flex items-center justify-between sticky top-0 bg-background-light dark:bg-background-dark z-10">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-slate-custom dark:text-white">
+<span class="text-sm font-medium opacity-60">Dashboard</span>
+<span class="material-symbols-outlined text-sm opacity-40">chevron_right</span>
+<span class="text-sm font-bold">Calendar</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-white/40 text-lg">search</span>
+<input class="bg-[#364156]/20 border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm text-white w-64 focus:ring-primary focus:border-primary" placeholder="Search events..." type="text"/>
+</div>
+<button class="relative p-2 text-white/60 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Create Event
+                </button>
+</div>
+</header>
+<!-- Calendar Content -->
+<div class="p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-6">
+<h2 class="text-2xl font-bold dark:text-white">October 2023</h2>
+<div class="flex items-center bg-[#364156]/20 rounded-lg p-1 border border-white/5">
+<button class="p-1 hover:bg-white/10 rounded">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 text-xs font-bold hover:bg-white/10 rounded">Today</button>
+<button class="p-1 hover:bg-white/10 rounded">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-xs font-medium text-primary">Classes</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-mint-custom/10 border border-mint-custom/20 rounded-full">
+<span class="size-2 rounded-full bg-mint-custom"></span>
+<span class="text-xs font-medium text-mint-custom">1-on-1s</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/20 rounded-full">
+<span class="size-2 rounded-full bg-yellow-500"></span>
+<span class="text-xs font-medium text-yellow-500">Sessions</span>
+</div>
+</div>
+</div>
+<!-- Monthly Grid -->
+<div class="bg-[#364156]/10 rounded-xl border border-white/10 overflow-hidden">
+<!-- Day Headers -->
+<div class="grid grid-cols-7 border-b border-white/10 bg-[#364156]/20">
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Sun</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Mon</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Tue</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Wed</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Thu</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Fri</div>
+<div class="py-3 text-center text-xs font-bold uppercase tracking-wider text-white/60">Sat</div>
+</div>
+<!-- Calendar Cells -->
+<div class="calendar-grid">
+<!-- Week 1 -->
+<div class="border-r border-b border-white/10 p-2 opacity-30">24</div>
+<div class="border-r border-b border-white/10 p-2 opacity-30">25</div>
+<div class="border-r border-b border-white/10 p-2 opacity-30">26</div>
+<div class="border-r border-b border-white/10 p-2 opacity-30">27</div>
+<div class="border-r border-b border-white/10 p-2 opacity-30">28</div>
+<div class="border-r border-b border-white/10 p-2 opacity-30">29</div>
+<div class="border-b border-white/10 p-2 opacity-30">30</div>
+<!-- Week 2 -->
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">1</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">2</div>
+<div class="bg-primary/20 text-primary text-[10px] p-1.5 rounded mb-1 font-bold truncate">UX Workshop</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">3</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">4</div>
+<div class="bg-mint-custom/20 text-mint-custom text-[10px] p-1.5 rounded mb-1 font-bold truncate">Meeting: Sarah</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] bg-primary/10 border-primary/40">
+<div class="text-sm font-bold text-primary mb-2">5</div>
+<div class="bg-primary text-white text-[10px] p-1.5 rounded mb-1 font-bold truncate">Figma Masterclass</div>
+<div class="bg-yellow-500/20 text-yellow-500 text-[10px] p-1.5 rounded mb-1 font-bold truncate">Study Group</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">6</div>
+</div>
+<div class="border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">7</div>
+</div>
+<!-- Week 3 -->
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">8</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">9</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">10</div>
+<div class="bg-primary/20 text-primary text-[10px] p-1.5 rounded mb-1 font-bold truncate">Intro to AI</div>
+<div class="bg-primary/20 text-primary text-[10px] p-1.5 rounded mb-1 font-bold truncate">Prompt Eng.</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">11</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors relative group">
+<div class="text-sm font-medium mb-2">12</div>
+<div class="bg-mint-custom/20 text-mint-custom text-[10px] p-1.5 rounded mb-1 font-bold truncate">Mentor: David</div>
+<!-- Date Details Hover Overlay -->
+<div class="absolute inset-0 bg-background-dark/95 border border-primary/50 p-3 hidden group-hover:flex flex-col z-20 rounded shadow-2xl">
+<div class="flex justify-between items-start mb-2">
+<span class="text-lg font-bold">12th Oct</span>
+<span class="material-symbols-outlined text-xs text-white/40">close</span>
+</div>
+<div class="space-y-3 overflow-y-auto pr-1">
+<div class="border-l-2 border-mint-custom pl-2 py-1">
+<p class="text-[10px] font-bold text-mint-custom">14:00 - 15:00</p>
+<p class="text-xs font-medium">Mentor Session: David L.</p>
+<button class="mt-2 w-full py-1 bg-mint-custom text-deep-green text-[10px] font-bold rounded">Join Call</button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">13</div>
+</div>
+<div class="border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">14</div>
+</div>
+<!-- Week 4 -->
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">15</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">16</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">17</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">18</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">19</div>
+<div class="bg-primary/20 text-primary text-[10px] p-1.5 rounded mb-1 font-bold truncate">Webflow Pro</div>
+</div>
+<div class="border-r border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">20</div>
+</div>
+<div class="border-b border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">21</div>
+</div>
+<!-- More rows... (truncated for design preview) -->
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">22</div>
+</div>
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">23</div>
+</div>
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">24</div>
+</div>
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">25</div>
+</div>
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">26</div>
+</div>
+<div class="border-r border-white/10 p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">27</div>
+</div>
+<div class="p-2 min-h-[120px] hover:bg-white/5 transition-colors">
+<div class="text-sm font-medium mb-2">28</div>
+</div>
+</div>
+</div>
+<!-- Upcoming List Widget (Optional but helpful for context) -->
+<div class="mt-8">
+<h3 class="text-lg font-bold dark:text-white mb-4">Agenda Highlights</h3>
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-[#364156]/20 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-deep-green flex flex-col items-center justify-center text-mint-custom">
+<span class="text-xs font-bold leading-none uppercase">Oct</span>
+<span class="text-xl font-bold leading-none">12</span>
+</div>
+<div>
+<p class="text-sm font-bold">Mentor Session: David</p>
+<p class="text-xs text-white/50">14:00 • 1-on-1 meeting</p>
+</div>
+<button class="ml-auto text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="bg-[#364156]/20 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-primary/20 flex flex-col items-center justify-center text-primary">
+<span class="text-xs font-bold leading-none uppercase">Oct</span>
+<span class="text-xl font-bold leading-none">15</span>
+</div>
+<div>
+<p class="text-sm font-bold">UX Principles Class</p>
+<p class="text-xs text-white/50">10:00 • Workshop</p>
+</div>
+<button class="ml-auto text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="bg-[#364156]/20 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-yellow-500/20 flex flex-col items-center justify-center text-yellow-500">
+<span class="text-xs font-bold leading-none uppercase">Oct</span>
+<span class="text-xl font-bold leading-none">19</span>
+</div>
+<div>
+<p class="text-sm font-bold">AI Ethics Discussion</p>
+<p class="text-xs text-white/50">18:30 • Study Session</p>
+</div>
+<button class="ml-auto text-primary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Help Button -->
+<button class="fixed bottom-6 right-6 size-12 bg-white text-background-dark rounded-full shadow-xl flex items-center justify-center hover:scale-105 transition-transform z-50">
+<span class="material-symbols-outlined">help</span>
+</button>
+</body></html>
