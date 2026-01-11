@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillShare Dashboard Overview</title>
+<title>Global Dashboard Overview | SkillShare</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -12,288 +14,333 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#2b8cee",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#011638", 
-                        "sidebar-bg": "#011638",
-                        "surface": "#364156", 
-                        "silver": "#CDCDCD",
-                        "mint-white": "#DFF8EB",
-                        "deep-green": "#122B1D",
+                        "primary": "#011637",
+                        "secondary": "#364156",
+                        "accent-light": "#DFF8EB",
+                        "accent-dark": "#122B1D",
+                        "text-muted": "#CDCDCD",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1723",
                     },
                     fontFamily: {
-                        "display": ["Lexend", "sans-serif"]
+                        "display": ["Lexend"]
                     },
                     borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
                         "full": "9999px"
                     },
                 },
             },
         }
     </script>
-<style type="text/tailwindcss">
+<style>
         body {
             font-family: 'Lexend', sans-serif;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .fill-icon {
-            font-variation-settings: 'FILL' 1;
+        .sidebar-active {
+            background-color: #364156;
+            color: #DFF8EB;
         }
-        .nav-link:hover {
-            background-color: #DFF8EB;
-            color: #011638;
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
         }
-        .nav-link:hover .material-symbols-outlined {
-            color: #011638;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #364156;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-mint-white">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
 <div class="flex h-screen overflow-hidden">
-<aside class="w-64 flex flex-col bg-sidebar-bg border-r border-white/10 p-4 shrink-0">
-<div class="flex items-center gap-3 mb-8 px-2">
-<div class="bg-primary size-10 rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-2xl">school</span>
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 bg-primary border-r border-secondary/30 hidden md:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 text-accent-light">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
 </div>
-<div class="flex flex-col">
-<h1 class="text-mint-white text-lg font-bold leading-none">SkillShare</h1>
-<p class="text-silver text-xs">Professional Tier</p>
+<h1 class="text-xl font-bold tracking-tight text-white">SkillShare</h1>
 </div>
-</div>
-<nav class="flex flex-col gap-1 flex-1">
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-mint-white text-background-dark shadow-sm" href="dashboard.html">
-<span class="material-symbols-outlined fill-icon">dashboard</span>
-<span class="text-sm font-medium">Dashboard</span>
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="matches.html">
-<span class="material-symbols-outlined">handshake</span>
-<span class="text-sm font-medium">Matches</span>
-
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="chat.html">
-<span class="material-symbols-outlined">chat_bubble</span>
-<span class="text-sm font-medium flex-1">Chat</span>
-
-<span class="bg-primary text-[10px] px-1.5 py-0.5 rounded-full text-white">3</span>
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="trending.html">
-<span class="material-symbols-outlined">trending_up</span>
-<span class="text-sm font-medium">Trending Skills</span>
-
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="community.html">
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active text-sm font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">chat</span>
+                    Chat
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
 <span class="material-symbols-outlined">groups</span>
-<span class="text-sm font-medium">Community</span>
-
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="calender.html">
+                    Community
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
 <span class="material-symbols-outlined">calendar_today</span>
-<span class="text-sm font-medium">Calendar</span>
-
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-all duration-200" href="meeting.html">
+                    Calendar
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+                    Trending
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined">handshake</span>
+                    Matches
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium" href="#">
 <span class="material-symbols-outlined">videocam</span>
-<span class="text-sm font-medium">Meeting</span>
-
-</a>
+                    Meeting
+                </a>
 </nav>
-<div class="mt-auto flex flex-col gap-4 border-t border-white/10 pt-4">
-<div class="bg-deep-green/50 p-3 rounded-lg border border-deep-green">
-<p class="text-[10px] text-primary font-bold uppercase tracking-wider mb-1">Weekly Progress</p>
-<div class="flex items-center gap-2 mb-2">
-<div class="flex-1 bg-white/10 h-1.5 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-[75%]"></div>
-</div>
-<span class="text-xs text-mint-white">75%</span>
-</div>
-</div>
-<button class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-silver transition-colors">
+<div class="p-4 space-y-4">
+<button class="w-full bg-accent-dark border border-accent-light/20 text-accent-light py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-accent-dark/80 transition-all">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                    Start Lesson
+                </button>
+<div class="pt-4 border-t border-secondary/30">
+<div class="flex items-center gap-3 px-4 py-2 text-text-muted text-sm cursor-pointer hover:text-white transition-colors">
 <span class="material-symbols-outlined">settings</span>
-<span class="text-sm font-medium">Settings</span>
-
-</button>
-<div class="flex items-center gap-3 p-2 bg-white/5 rounded-xl">
-<div class="size-8 rounded-full bg-cover bg-center" data-alt="User profile avatar portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfYJRiNsx14oBHPh4KbeTHCeO3BiQyYIb6ui_4VWsQyC7i3mULdtBl46yXMweP1Ugxb5bcPnm4aOuW9WwGFZN7SCsQDVpGXhgksMmwO7tIYh_T2co4AygC0S4kF0NdNYSXEl4hq3mUcc1QjShIJXTm48NH1fNonllLy42gH5-6sF3ET-IySfuoP4EalGM1Wr8zUm-i8RAsfgMS-pY6Y_uOPnRsfv9r0PnoABL0OX2mmufM7OZX0jRhX_SBuDqxyGeu9y3JKcvqEbo')"></div>
-<div class="flex-1 min-w-0">
-<p class="text-xs font-bold truncate">Alex Rivera</p>
-<p class="text-[10px] text-silver truncate">alex.r@skillshare.com</p>
-</div>
-<span class="material-symbols-outlined text-silver text-sm cursor-pointer hover:text-white">logout</span>
+                        Settings
+                    </div>
+<div class="flex items-center gap-3 px-4 py-2 text-red-400 text-sm cursor-pointer hover:text-red-300 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </div>
 </div>
 </div>
 </aside>
-<main class="flex-1 flex flex-col overflow-y-auto">
-<header class="flex items-center justify-between px-8 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 border-b border-white/5">
-<div class="flex items-center gap-4 max-w-md w-full">
-<div class="relative w-full">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-silver text-xl">search</span>
-<input class="w-full bg-surface border-none rounded-lg pl-10 pr-4 py-2 text-sm text-mint-white placeholder:text-silver focus:ring-1 focus:ring-primary" placeholder="Search courses, mentors, or files..." type="text"/>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-16 flex items-center justify-between px-8 bg-background-light dark:bg-background-dark border-b border-secondary/20">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-secondary/10 dark:bg-secondary/20 border-none rounded-xl pl-10 pr-4 py-2 focus:ring-2 focus:ring-accent-light/30 text-sm" placeholder="Search courses, mentors, or topics..." type="text"/>
 </div>
 </div>
-<div class="flex items-center gap-4">
-<button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-primary/90 transition-all flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">add_circle</span>
-                    Create New
-                </button>
-<button class="bg-surface text-silver p-2 rounded-lg hover:text-mint-white border border-white/5">
+<div class="flex items-center gap-6">
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-secondary/10 dark:bg-secondary/20 text-text-muted hover:text-white transition-colors">
 <span class="material-symbols-outlined">notifications</span>
 </button>
-<button class="bg-surface text-silver p-2 rounded-lg hover:text-mint-white border border-white/5">
+<button class="p-2 rounded-xl bg-secondary/10 dark:bg-secondary/20 text-text-muted hover:text-white transition-colors">
 <span class="material-symbols-outlined">mail</span>
 </button>
 </div>
+<div class="flex items-center gap-3 pl-4 border-l border-secondary/20">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold">Alex Sterling</p>
+<p class="text-xs text-text-muted leading-none">Pro Learner</p>
+</div>
+<div class="size-10 rounded-full bg-center bg-cover border-2 border-accent-light/30" data-alt="Portrait of a professional learner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqROXZ86Nfcd8H0sb5johQAH-6dXtxNKzkYUfdKx8yPr5GkhGFLPfAGjSqVxerqZhG9bfCc8_EkumBLwceiu15QS5J9u8zPnOJOtpKAt6FYpAI4t8GpMrlfUoArmKW-P7DtJK1jA19aI94pzP2ld7Xwr00l-KG2QARO6WYdFSkJk7JFCW-NMeeum35O0DR3g2hVJuPrH0xtokHOsycaNVwfHSVS2DXMfN_yIbpzKudIeFN9SeS7EC9XsvLFw3Jp3HLartLOff-20M')"></div>
+</div>
+</div>
 </header>
-<div class="p-8 space-y-8">
-<section class="@container">
-<div class="relative bg-surface rounded-2xl overflow-hidden border border-white/5 p-8 flex flex-col md:flex-row items-center gap-8">
-<div class="flex-1 space-y-4">
-<h2 class="text-3xl font-bold text-mint-white leading-tight">Welcome back, Alex!<br/>You've completed <span class="text-primary">75%</span> of your weekly goal.</h2>
-<p class="text-silver max-w-lg">Your "Advanced UI Design" certification is almost complete. Finish the next 2 modules to earn your badge.</p>
-<div class="flex gap-3 pt-2">
-<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-primary/20">Resume Learning</button>
-<button class="bg-white/10 text-mint-white px-6 py-2.5 rounded-lg font-bold text-sm border border-white/10 hover:bg-white/20">View Stats</button>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- Page Heading -->
+<div class="mb-8">
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Global Dashboard Overview</h2>
+<p class="text-text-muted mt-1">Welcome back, Alex! You've made significant progress this week.</p>
+</div>
+<!-- Statistics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<p class="text-text-muted text-sm font-medium">Courses Completed</p>
+<span class="text-accent-light bg-accent-dark px-2 py-0.5 rounded text-xs font-bold">+12%</span>
+</div>
+<p class="text-3xl font-bold">24</p>
+<div class="mt-4 h-1.5 w-full bg-secondary/20 rounded-full overflow-hidden">
+<div class="h-full bg-accent-light w-[75%] rounded-full"></div>
 </div>
 </div>
-<div class="w-full md:w-1/3 aspect-video bg-gradient-to-br from-primary/30 to-deep-green/30 rounded-xl border border-white/10 flex items-center justify-center relative overflow-hidden">
-<span class="material-symbols-outlined text-6xl text-white/20">auto_graph</span>
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<p class="text-text-muted text-sm font-medium">Skill Points</p>
+<span class="text-accent-light bg-accent-dark px-2 py-0.5 rounded text-xs font-bold">+850</span>
+</div>
+<p class="text-3xl font-bold">12,450</p>
+<div class="mt-4 h-1.5 w-full bg-secondary/20 rounded-full overflow-hidden">
+<div class="h-full bg-accent-light w-[60%] rounded-full"></div>
 </div>
 </div>
-</section>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2 space-y-8">
-<section>
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<p class="text-text-muted text-sm font-medium">Hours Learned</p>
+<span class="text-red-400 bg-red-400/10 px-2 py-0.5 rounded text-xs font-bold">-2h</span>
+</div>
+<p class="text-3xl font-bold">148.5 <span class="text-sm font-normal text-text-muted">hrs</span></p>
+<div class="mt-4 h-1.5 w-full bg-secondary/20 rounded-full overflow-hidden">
+<div class="h-full bg-accent-light w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Left Column: Charts and Courses -->
+<div class="xl:col-span-2 space-y-8">
+<!-- Your Progress Chart -->
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold">Your Progress</h3>
+<p class="text-sm text-text-muted">Learning activity for the last 7 days</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-secondary/10 text-xs font-medium">Week</button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary/30 text-accent-light text-xs font-medium">Month</button>
+</div>
+</div>
+<div class="h-[250px] w-full flex flex-col">
+<svg class="flex-1 w-full" preserveaspectratio="none" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#DFF8EB" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#DFF8EB" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,40 T320,90 T400,30 L400,150 L0,150 Z" fill="url(#gradient)"></path>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,40 T320,90 T400,30" fill="none" stroke="#DFF8EB" stroke-width="3"></path>
+</svg>
+<div class="flex justify-between mt-4 text-[10px] text-text-muted font-bold uppercase tracking-widest px-2">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Active Courses -->
+<div>
 <div class="flex items-center justify-between mb-4">
-<h3 class="text-xl font-bold text-mint-white">In-progress courses</h3>
-<a class="text-primary text-sm font-medium hover:underline" href="#">See all</a>
+<h3 class="text-lg font-bold">Active Courses</h3>
+<a class="text-sm text-accent-light hover:underline" href="#">View All</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-surface rounded-xl p-4 border border-white/5 hover:border-primary/50 transition-all group">
-<div class="w-full aspect-video rounded-lg mb-4 bg-cover bg-center overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAB51VkfkHwGk1fyQy2pYYBMRJuIShaAP1ww41XFEoR6TQhE4d59xPy7lI62n-8ki4MYFZInx94xeea1kZI5QK0zDQwGbxy0MmwpPivuh0GpIJo0UP-Oq_VeqwR-Jczg7k-8qwQuMByXGWdy3JWs5BSN8RYstuBnsdKHFkZMmL3E1RInXvIsEtB2YNn8BVDAU8miYbrCVI6Mx6iBQ8T4lfzozB3zbsLXPz80HIhLwPX6ivCXl0jlXdUtFiQMuNCS64xUElr5L-RvLg')">
-<div class="inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center h-full">
-<span class="material-symbols-outlined text-white text-4xl">play_circle</span>
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl overflow-hidden group">
+<div class="h-32 bg-center bg-cover relative" data-alt="Code editor with abstract neon lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdJczFonQzUK5adYgp46sihmBRHT50KBjwj9h5TRt3vA9Mt208wYSy08zaJI9NzbIcFtLSv2plF0Mwf3DinfrAmWELSK5tfBR45pjh-qAc5PU9jUyzRVLpYTcfZ5QuzVI-bdFwXwVMtjIy0Oi-rQdGg-TarCuot7uAqoFewEW_a0weAHXXxCh61jTXv-mjtP-j_v7wa93JsqIwyj9RvxoJ6K1S2qZb5jPh48UqD0faBdEm1ZVBariz7DVp_JyeVGmxsZTSa9F67TA')">
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors"></div>
+<span class="absolute top-3 right-3 bg-accent-dark/80 text-accent-light text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Advanced</span>
 </div>
-</div>
-<p class="text-xs font-bold text-primary mb-1 uppercase tracking-wider">Design</p>
-<h4 class="font-bold text-mint-white mb-1">Advanced UI Design</h4>
-<p class="text-silver text-xs mb-4">Module 4 of 10 • Instructor: Sarah J.</p>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[10px] text-silver font-medium">
+<div class="p-4">
+<h4 class="font-bold text-sm mb-1 truncate">Cloud Architecture Mastery</h4>
+<p class="text-xs text-text-muted mb-4">Dr. Sarah Jenkins</p>
+<div class="flex items-center justify-between text-xs mb-2">
 <span>Progress</span>
-<span>40%</span>
+<span class="font-bold">68%</span>
 </div>
-<div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-[40%]"></div>
+<div class="h-1.5 w-full bg-secondary/20 rounded-full mb-4">
+<div class="h-full bg-accent-light w-[68%] rounded-full shadow-[0_0_8px_rgba(223,248,235,0.4)]"></div>
 </div>
-</div>
-</div>
-<div class="bg-surface rounded-xl p-4 border border-white/5 hover:border-primary/50 transition-all group">
-<div class="w-full aspect-video rounded-lg mb-4 bg-cover bg-center overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwQkFxFYdIHjwfJHEwfEMY4FemFy3QPvqbkMgTXVVOkMGwxXbPVoz12bfgGrx4nU55l39e9mJqXwjEik0WGhem8Fa3LZDNZoPGmTbIjKRoYmhWLGZ_8GHfM9ThPh0u36l9a7DgFTf9z7bdvN_dbzKzHrBDyFEZOpg814RMRKGRs8z520xCUfvluhgb6rzUXMNzZhp8vE232m0M44ku93m118ElX4caQht64s23i1Lnlh1FxQEfeqifolXKE9qXRfLIxsrJUZfLIjU')">
-<div class="inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center h-full">
-<span class="material-symbols-outlined text-white text-4xl">play_circle</span>
+<button class="w-full py-2 bg-secondary/10 hover:bg-secondary/20 text-xs font-bold rounded-lg transition-colors">Continue Lesson</button>
 </div>
 </div>
-<p class="text-xs font-bold text-primary mb-1 uppercase tracking-wider">Marketing</p>
-<h4 class="font-bold text-mint-white mb-1">Growth Marketing Strategy</h4>
-<p class="text-silver text-xs mb-4">Module 2 of 5 • Instructor: Mike L.</p>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[10px] text-silver font-medium">
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl overflow-hidden group">
+<div class="h-32 bg-center bg-cover relative" data-alt="Dashboard with business analytics charts" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzw6Eo3eBS8JPK0V5LfSbB4Eot8dC3wGBoj17SpKJ6uD9K3cA9Dt5AXq5nmOXnxoNCAdGvCBIo1feLg5oREaGnKrsPoGXL-CXg26jmte4wjjGz92frNqi2R2gQDGKfiTFyTyRJLF5hsGa0gSPwkNIT4ZHhNxV4ZSRo5pKH6ZZYciPVGa4LUlsGeJDwvHq1mQ2j8wtw8F_hbqjYnFHq2TfaY4UovPQLIE2dWbZaEjtjtTvRoriEvEFSVRVDBvEoFh1UYJ_x606h4vU')">
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors"></div>
+<span class="absolute top-3 right-3 bg-accent-dark/80 text-accent-light text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Intermediate</span>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-sm mb-1 truncate">Data Science Foundations</h4>
+<p class="text-xs text-text-muted mb-4">Marcus T. Bloomberg</p>
+<div class="flex items-center justify-between text-xs mb-2">
 <span>Progress</span>
-<span>25%</span>
+<span class="font-bold">32%</span>
 </div>
-<div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-[25%]"></div>
+<div class="h-1.5 w-full bg-secondary/20 rounded-full mb-4">
+<div class="h-full bg-accent-light w-[32%] rounded-full shadow-[0_0_8px_rgba(223,248,235,0.4)]"></div>
 </div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<div class="flex items-center justify-between mb-4">
-<h3 class="text-xl font-bold text-mint-white">Recommended for you</h3>
-<a class="text-primary text-sm font-medium hover:underline" href="#">Explore all</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="flex gap-4 p-3 bg-surface rounded-xl border border-white/5 hover:bg-white/5 transition-colors cursor-pointer">
-<div class="size-20 bg-cover bg-center rounded-lg shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdwdGRz5Z8zgZP9RIONF7BMwdlcNAErSKcOgFggWoSpE-O8C8_5TCozI1wKQYH_2U7Dwf9J6yTQISR3w1knTbvq-8HsPq85Yzx70wvIHIER_yG3OFFZP3dspFszsxSzERwhYGeeFhTH3WH6JGp9XiM41GYZXIU0FkS3DX5WtldBQdVeBrccXjOcufp3qnCmqpp-l2JPtTeSp02giOn8QCy-uykGEkANGkIWT97ciUiXKJ3SOao5guCiiA_iZNbmKLkEfg7yhvDl_s')"></div>
-<div class="flex flex-col justify-center">
-<h4 class="font-bold text-sm text-mint-white leading-tight mb-1">Data Viz Masterclass</h4>
-<p class="text-silver text-xs">12.5 hours • Advanced</p>
-<div class="flex items-center gap-1 mt-1">
-<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-icon">star</span>
-<span class="text-[10px] text-silver font-bold">4.9 (1.2k)</span>
-</div>
-</div>
-</div>
-<div class="flex gap-4 p-3 bg-surface rounded-xl border border-white/5 hover:bg-white/5 transition-colors cursor-pointer">
-<div class="size-20 bg-cover bg-center rounded-lg shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqGpd7lgV7pctqvgLapI2JQ8-EAckGtwSMqjm0cjzf_z_XEA6ybeBwGam6OnDm1TXU-5Gmgb-9-ioAgp5tGgeiKGAGw_FT9GAsP3tMjiJTaRm9scnUewJgjjep7P55cDLk_V7CjnI9hvlhegwYA5Hpv_oqSabXsGUXrmYObea7qFJlnm6lw4U-VRxjZMn-sDEuLLb340PhK5v48ijtjElK_MtzNkp1TdZ1aTkkJSjfpysuillfpp_sabS2WLATY8UrN_ze2U_8I5g')"></div>
-<div class="flex flex-col justify-center">
-<h4 class="font-bold text-sm text-mint-white leading-tight mb-1">React for Designers</h4>
-<p class="text-silver text-xs">8 hours • Intermediate</p>
-<div class="flex items-center gap-1 mt-1">
-<span class="material-symbols-outlined text-[14px] text-yellow-500 fill-icon">star</span>
-<span class="text-[10px] text-silver font-bold">4.8 (850)</span>
+<button class="w-full py-2 bg-secondary/10 hover:bg-secondary/20 text-xs font-bold rounded-lg transition-colors">Continue Lesson</button>
 </div>
 </div>
 </div>
 </div>
-</section>
 </div>
+<!-- Right Column: Notifications and Schedules -->
+<div class="space-y-8">
+<!-- Upcoming Schedule -->
+<div class="bg-white dark:bg-primary/40 border border-secondary/20 rounded-xl p-6">
+<h3 class="text-lg font-bold mb-6">Next Meetings</h3>
 <div class="space-y-6">
-<div class="bg-surface rounded-xl border border-white/5 p-6 space-y-6">
-<h3 class="text-lg font-bold text-mint-white flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">event_note</span>
-                            Upcoming
-                        </h3>
-<div class="space-y-4">
 <div class="flex gap-4">
-<div class="bg-deep-green flex flex-col items-center justify-center size-12 rounded-lg shrink-0 border border-white/5">
-<span class="text-[10px] font-bold text-primary uppercase">Oct</span>
-<span class="text-lg font-bold text-mint-white leading-none">24</span>
+<div class="flex flex-col items-center justify-center min-w-[50px] h-[60px] bg-secondary/20 rounded-xl">
+<p class="text-[10px] font-bold uppercase text-text-muted">Oct</p>
+<p class="text-xl font-black">12</p>
 </div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold truncate">Project Sync</h4>
-<p class="text-xs text-silver">2:00 PM - 3:00 PM</p>
-<div class="mt-2 flex items-center gap-2">
-<div class="bg-white/10 px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
-<span class="material-symbols-outlined text-[12px]">video_call</span>
-                                            Google Meet
-                                        </div>
+<div class="flex-1">
+<h4 class="text-sm font-bold truncate">UX Design Mentorship</h4>
+<p class="text-xs text-text-muted mt-0.5">10:00 AM - 11:30 AM</p>
+<div class="flex items-center gap-1 mt-2">
+<div class="size-5 rounded-full bg-cover" data-alt="Mentor profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRB6N3CadIONlWK78f0xQKy01Ga7FAzqNe12_dJLRY6AwxA8vvlj6U54cTmrU2hrlOV1z2sBpm9MmHVRkqfB7uwyC-ubtVlHvyhcuLpr3ZDdtKHDLcTbpAB3lcsMPOZUqIVtlY5R0g5dpnCUtfUD-cMeuv73L3rHwuYtTI8dZMcCU-RO0OUmBDUlA3AZimjqy_Mi2sv14JV6PEQqklEM_mII_S07clRYP1Ev69boUyajhIRRDDI-4aGDw-SjKDvwHtUUKbq35ouUw')"></div>
+<span class="text-[10px] font-medium text-accent-light">With Elena G.</span>
 </div>
 </div>
 </div>
 <div class="flex gap-4">
-<div class="bg-background-dark/50 flex flex-col items-center justify-center size-12 rounded-lg shrink-0 border border-white/5">
-<span class="text-[10px] font-bold text-silver uppercase">Oct</span>
-<span class="text-lg font-bold text-silver leading-none">25</span>
+<div class="flex flex-col items-center justify-center min-w-[50px] h-[60px] bg-secondary/20 rounded-xl">
+<p class="text-[10px] font-bold uppercase text-text-muted">Oct</p>
+<p class="text-xl font-black">14</p>
 </div>
-<div class="flex-1 min-w-0">
-<h4 class="text-sm font-bold truncate">Logo Sketch Due</h4>
-<p class="text-xs text-silver">Assignment Deadline</p>
-<div class="mt-2">
-<span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold">Urgent</span>
+<div class="flex-1">
+<h4 class="text-sm font-bold truncate">Project Review</h4>
+<p class="text-xs text-text-muted mt-0.5">02:00 PM - 03:00 PM</p>
+<div class="flex items-center gap-1 mt-2">
+<div class="size-5 rounded-full bg-cover" data-alt="Peer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEPlXnUXrnZNbGnX5oMtc6Ehm912f3Yc8GiNI2ga9zHwMHpjKcW7MwXpnd3wzaysABJ-qhhn3ifQXO2ed2DrVlGJ6_I5my5zKo1d7ryI9ffC3_n0nL-4XNQmoGeJmc30xTVldecDCI7xYyEYgl8qCoj-FIaaTgLwr-NWacm450-dyrgycswCua4AD9nvBRomuV4OGPF9YM-xUxZuapdtNl52sHRpG1bR0VxrVDorJqxbzT_HCnIexy85zgo_5zNQtaUKW1rTYkTRk')"></div>
+<span class="text-[10px] font-medium text-accent-light">With David R.</span>
 </div>
 </div>
 </div>
 </div>
-<button class="w-full py-2 rounded-lg border border-white/10 text-xs font-bold text-silver hover:bg-white/5 transition-colors">
-                            View Calendar
-                        </button>
+<button class="w-full mt-6 py-3 border border-secondary/30 text-xs font-bold rounded-xl hover:bg-secondary/10 transition-colors">View Full Calendar</button>
 </div>
-<div class="bg-surface rounded-xl border border-white/5 p-6">
-<h3 class="text-lg font-bold text-mint-white mb-4">Latest Activity</h3>
+<!-- Recommendations / Matches -->
+<div class="bg-accent-dark/50 border border-accent-light/10 rounded-xl p-6">
+<h3 class="text-lg font-bold mb-4 text-accent-light">Recommended Match</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="size-12 rounded-xl bg-center bg-cover" data-alt="Recommended mentor profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCljASp5uRVpWvPOr_w1VoU3bbHHmo7Zp_ZW_Y5JpOxXXdm4L6UyAJjpLJvVDSVMHh-FI68cDMPYC2FezLSwHkwawtOMVjB-euCRO3EaB5CdEA6kssZ6bKdY8Eh46qJn5DxfABRaFEqIAVWujtpFh3LQSICQBXz4WsKD_dZ-mEWwymLr0jp9N_t3wy8QwBjpNhdJ8lS2UgE0O7a4WUXS8X0Nhp7-ucWOPqq6cLCVcmypTrz4kVMtgV7KHOKS3D35hA_3ib0SMUKwBI')"></div>
+<div>
+<h4 class="text-sm font-bold">Julian V.</h4>
+<p class="text-xs text-text-muted">Senior DevOps Engineer</p>
+</div>
+</div>
+<p class="text-xs text-text-muted mb-4 leading-relaxed">Julian matches your interest in Kubernetes and Docker orchestration. 98% Match Score.</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-accent-light text-primary text-xs font-bold rounded-lg hover:brightness-110 transition-all">Connect</button>
+<button class="p-2 border border-accent-light/30 rounded-lg text-accent-light">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Notifications Feed -->
 <div class="space-y-4">
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4Rexq8-g0FU1VB33FuO2dV5qeeRRy8N097afzSXXXO2_lrKbmRsvfBDTXe6j102gpQdjMwJzZLNH3S4hmwrENONy_0-lzgGft0zRB3m6GUd3JJX44w9TNfPQOpyB7HHrrF2sRXfaIKm23xJC0AHJZFbPIPkD5P-V54td6JoEd0GY1OxZSCL6P9rOGfN5cuVINYAOci2nP5R9Dc2hybPq0fmVLTKUK6jfQWbk2B01SG09SBrhChnXNn9KVgMXxT_TFamh6aDGaExQ')"></div>
-<p class="text-xs text-silver"><span class="text-mint-white font-bold">Emma</span> posted in <span class="text-primary">Design Hub</span></p>
+<div class="flex items-center justify-between px-2">
+<h3 class="text-sm font-bold uppercase tracking-widest text-text-muted">Recent Activity</h3>
+<span class="size-2 rounded-full bg-accent-light animate-pulse"></span>
 </div>
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWTBFdJxoGdHjs_ReqBWAQW2oopr_Oi_hkUCLBympc5eFHH2AO4b4z9tcMl41JwN3id20JPaMlJD5EmenReNWs1OcL6nKrKs7E9eri2XPzOhrPfyXgxxJZJZ55Jo3sINOLbj1H4uyZb-lmyRcwy-5waM5jpaAkaOXWbMPrs3jrS-DHKsQRu-ooRJJ9CgKNHKECWcve-nK748BDUETZ9hDaNJvpy2zj4oSdkKNKZmScv90BdOaQMk1pPnsFaYilFSngnDKKzstdS28')"></div>
-<p class="text-xs text-silver"><span class="text-mint-white font-bold">Liam</span> liked your comment</p>
+<div class="space-y-3">
+<div class="flex gap-3 p-3 rounded-xl bg-white dark:bg-primary/20 border border-secondary/10">
+<div class="size-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+</div>
+<div>
+<p class="text-xs font-medium">New Certificate Earned!</p>
+<p class="text-[10px] text-text-muted mt-0.5">Python for Data Analysis</p>
+</div>
+</div>
+<div class="flex gap-3 p-3 rounded-xl bg-white dark:bg-primary/20 border border-secondary/10 opacity-70">
+<div class="size-8 rounded-lg bg-accent-light/10 text-accent-light flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+</div>
+<div>
+<p class="text-xs font-medium">Message from Marcus</p>
+<p class="text-[10px] text-text-muted mt-0.5">2 hours ago</p>
+</div>
 </div>
 </div>
 </div>
@@ -302,5 +349,4 @@
 </div>
 </main>
 </div>
-
 </body></html>
