@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works - SkillSwap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">swap_calls</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">SkillSwap</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">How it works</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Discover</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Pricing</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                    Log In
+                </button>
+<button class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-lg shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                    Get Started
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-20 lg:py-32">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex flex-col items-center text-center gap-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                        Your journey starts here
+                    </div>
+<h1 class="text-5xl md:text-7xl font-black tracking-tight max-w-4xl bg-gradient-to-r from-slate-900 via-primary to-slate-900 dark:from-white dark:via-primary dark:to-white bg-clip-text text-transparent">
+                        Unlock New Skills Through Exchange
+                    </h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                        Join a global community of learners and mentors. Share what you know, learn what you don't. It's time to build your future together.
+                    </p>
+<div class="flex flex-wrap justify-center gap-4 mt-4">
+<button class="px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-xl shadow-primary/30 hover:scale-105 transition-transform">
+                            Start Swapping Now
+                        </button>
+<button class="px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                            Watch Video
+                        </button>
+</div>
+</div>
+</div>
+<!-- Abstract background elements -->
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 size-[600px] bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 size-[500px] bg-teal-400/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Timeline Section Header -->
+<section class="py-12 bg-white dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">How it works in 5 simple steps</h2>
+<div class="h-1.5 w-24 bg-primary rounded-full mx-auto"></div>
+</div>
+<!-- 5-Step Horizontal Timeline -->
+<div class="relative grid grid-cols-1 md:grid-cols-5 gap-8">
+<!-- Progress Line (Desktop) -->
+<div class="hidden md:block absolute top-[60px] left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -z-10"></div>
+<!-- Step 1 -->
+<div class="step-card group flex flex-col items-center text-center gap-6">
+<div class="relative">
+<div class="size-20 bg-white dark:bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">person_add</span>
+</div>
+<div class="absolute -top-2 -right-2 size-8 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center border-4 border-background-light dark:border-background-dark">1</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-xl">Profile Creation</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Define your expertise and what you want to learn.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="step-card group flex flex-col items-center text-center gap-6">
+<div class="relative">
+<div class="size-20 bg-white dark:bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">search_spark</span>
+</div>
+<div class="absolute -top-2 -right-2 size-8 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center border-4 border-background-light dark:border-background-dark">2</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-xl">Discovering Matches</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Our algorithm finds users with complementary skills.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="step-card group flex flex-col items-center text-center gap-6">
+<div class="relative">
+<div class="size-20 bg-white dark:bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">forum</span>
+</div>
+<div class="absolute -top-2 -right-2 size-8 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center border-4 border-background-light dark:border-background-dark">3</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-xl">Sending Requests</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Connect with mentors or students through secure messaging.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="step-card group flex flex-col items-center text-center gap-6">
+<div class="relative">
+<div class="size-20 bg-white dark:bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">video_chat</span>
+</div>
+<div class="absolute -top-2 -right-2 size-8 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center border-4 border-background-light dark:border-background-dark">4</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-xl">Learning &amp; Teaching</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Schedule sessions and exchange knowledge via video or chat.</p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="step-card group flex flex-col items-center text-center gap-6">
+<div class="relative">
+<div class="size-20 bg-white dark:bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">military_tech</span>
+</div>
+<div class="absolute -top-2 -right-2 size-8 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center border-4 border-background-light dark:border-background-dark">5</div>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-xl">Earning Rewards</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Gain reputation points and unlock new community badges.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Highlight Section -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-square bg-gradient-to-br from-primary/20 to-teal-400/20 rounded-3xl p-8 overflow-hidden">
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 h-full flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
+<div class="size-10 rounded-full bg-slate-200" data-alt="User profile avatar for skill swapping" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyFG8e4wIPBz9vfdf_crmONQweascPdfTUljatsZ0TS6nlwQMjvDFSUwqPSW6rTkV5FcnPW07uH731qpPKJQM7F81F8TD6fyHyqQBtfrqs7GXOx6Z3cwAv0BJEC6B3GLYBo0nwyWHWY9Ck70D91zJcACEC9ENwJyGI25Zc5sAWldlFn9l6duHB3joRz-N9NVvLwQMeOKSGQ9aS4Y4g3Dw1Wfy_gbK1lHiUZPlkNzO6AWzgQtOzbI7JVgq16C6oH9tVQ6ipAVqquiHC'); background-size: cover;"></div>
+<div>
+<div class="font-bold text-sm">Sarah Mitchell</div>
+<div class="text-xs text-slate-500">Expertise: UI/UX Design</div>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="h-4 w-3/4 bg-slate-100 dark:bg-slate-700 rounded-full"></div>
+<div class="h-4 w-full bg-slate-100 dark:bg-slate-700 rounded-full"></div>
+<div class="h-4 w-1/2 bg-slate-100 dark:bg-slate-700 rounded-full"></div>
+</div>
+<div class="mt-auto flex justify-end">
+<div class="px-4 py-2 bg-primary rounded-lg text-white text-xs font-bold">Matched!</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 size-48 bg-teal-500/10 rounded-full blur-2xl -z-10"></div>
+</div>
+<div class="space-y-6">
+<h2 class="text-4xl font-extrabold tracking-tight">Personalized Matching Algorithm</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        We don't just connect people; we connect the right people. Our AI-driven engine analyzes your skill gaps and teaching strengths to find perfect partners who are ready to grow with you.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Curated skill lists for every industry</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Timezone and language preference matching</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Feedback-driven reputation system</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 px-6">
+<div class="max-w-5xl mx-auto relative rounded-3xl bg-slate-900 dark:bg-primary/10 overflow-hidden shadow-2xl">
+<!-- Geometric pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="relative z-10 p-12 md:p-20 flex flex-col items-center text-center gap-8">
+<h2 class="text-4xl md:text-5xl font-black text-white leading-tight">Ready to swap skills?</h2>
+<p class="text-slate-300 text-lg md:text-xl max-w-2xl">
+                        Join thousands of users already teaching and learning today. Your first match is waiting for you.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+<button class="flex-1 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 hover:scale-105 transition-all text-lg">
+                            Get Started for Free
+                        </button>
+</div>
+<p class="text-slate-500 text-sm">No credit card required. Cancel anytime.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Simple Footer -->
+<footer class="py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">swap_calls</span>
+</div>
+<span class="font-bold text-lg">SkillSwap</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<div class="text-sm text-slate-400">
+                © 2024 SkillSwap Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

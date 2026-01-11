@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Skill Swap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Lexend", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex min-h-screen flex-col lg:flex-row">
+<!-- Left Pane: Image Section -->
+<div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-primary/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Two people collaborating on a laptop in a bright modern space" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwMwOGDcY9C0waTzISc-kEgwN55Bn5WzIq2oopvqiCvdwi8FjLXMmrSGRcBnJKs9D2ITHF7LCyPWbzM2lyD1u4rybwv4P-eSnzGDVozv76mkYIlyKpKwwdGgooiWp-v0xNCx_YR7NUgNZhbf2RTQxBk9lGvGZdOwni-XevY74JBIGFFrH7f6qn6y_OSKG1jWI87y1DntVvdyEjiyiRJOFoqRb-2wZJ4iUsGWMERIyRsS17uqeK-b18fqIXNlEzCMhpHGkjd3jKky5D');">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/40 to-teal-500/20 mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 flex flex-col justify-end p-12 text-white">
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-4xl">swap_calls</span>
+<span class="text-2xl font-bold tracking-tight">Skill Swap</span>
+</div>
+<h1 class="text-5xl font-bold leading-tight mb-4">Master new skills <br/>through exchange.</h1>
+<p class="text-xl opacity-90 max-w-md">Connect with thousands of learners and experts. Teach what you love, learn what you need.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex -space-x-3">
+<img alt="" class="h-10 w-10 rounded-full border-2 border-white" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF5IXUp3J4dzjb3VxGWS2QCQbjbnliLPswI4U3D3kdDqVdxYgQXCNG37lV2bdRDASwSR-8qB6lM5zYgPgSnE5gkI0Wvx5wRhCjJdpnYppz2smOq0fPcbIp7w4Xj6Ozy9zzNkFVBjQrcgtGs7yiPbDESkwi9m474BSSNv5RFZID43KfGnHU0MMvdqazZv1PC_ClDWDra9b5Vj6N20qX8od7P2Jpi_FA4tWeLLe3tloqdDVf6uTV2ne1z8eeC57FD4uTiXH8JGVg7ulI"/>
+<img alt="" class="h-10 w-10 rounded-full border-2 border-white" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2nY_yG4LX-H7GVNv_ux1vhyv9Ksn_L9w667AJHyXPg9nen6PF6FY4M7VP2icJARE1AJaSlMjUaTimwzE5Czy88LUDGjzKQSWAann1B8IpEr6T3NF4QcjWHDJSfrlZFBzQF1cpQasZtIow3aU51XpvMmBJeoDSbywvcRhL77XdgNb54nbNdqaUjR3byPbl7-tYsGQLHUKyZLvSYXdybYxJC2ilBFH55LtAetScN_TFVQmhFJr-Q5x86iloXqtJgqfcDpZh7EC6Ahzg"/>
+<img alt="" class="h-10 w-10 rounded-full border-2 border-white" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaWRDFeNT1CAUAQjXd8uH_R1bhtV6v8qQw6ScGXLEji1SF57LIzPKfSUl512zoyM9_leksfMbnYY6BoSACoUiWNSIS1Ipn5NhI--DpAzTV5yROcXIFqFvfcMlWq_VG4KKX_jy25JJ5UpEk5aK_gFml6yGwB-RNhaj4pYv-4pe4Mku62U3owDrr6a6WJ-yH52jqL1DYRcsc4Kk20jBpLNanGrJUN78gixWAyt73bT970oY1rb5COrN8dE-evtF5XoT8gvEGCxZG54fe"/>
+</div>
+<p class="text-sm self-center">Join 5,000+ members today</p>
+</div>
+</div>
+</div>
+<!-- Right Pane: Login Form Section -->
+<div class="flex flex-1 flex-col justify-center px-6 py-12 lg:px-24 bg-white dark:bg-background-dark">
+<!-- Mobile Header -->
+<div class="lg:hidden flex items-center gap-2 mb-12 text-primary">
+<span class="material-symbols-outlined text-3xl">swap_calls</span>
+<span class="text-xl font-bold">Skill Swap</span>
+</div>
+<div class="mx-auto w-full max-w-sm">
+<h2 class="text-3xl font-bold text-[#0d141b] dark:text-white mb-2">Welcome Back</h2>
+<p class="text-[#4c739a] dark:text-slate-400 mb-8">Sign in to connect with your community and start exchanging skills.</p>
+<form class="space-y-5">
+<!-- Email Field -->
+<div class="flex flex-col gap-2">
+<label class="text-[#0d141b] dark:text-white text-sm font-medium">Email Address</label>
+<input class="flex w-full rounded-lg text-[#0d141b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#cfdbe7] dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-[#4c739a] px-4 py-3 text-base font-normal transition-all" placeholder="name@example.com" type="email"/>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-[#0d141b] dark:text-white text-sm font-medium">Password</label>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="flex w-full rounded-lg text-[#0d141b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#cfdbe7] dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-[#4c739a] px-4 py-3 text-base font-normal transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-[#4c739a]" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-2 px-1">
+<input class="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="text-sm text-[#4c739a] dark:text-slate-400" for="remember">Remember me for 30 days</label>
+</div>
+<!-- Sign In Button -->
+<button class="w-full flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white h-14 text-base font-bold transition-all shadow-lg shadow-primary/20" type="submit">
+                        Sign In
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-[#e7edf3] dark:border-slate-800"></div>
+</div>
+<div class="relative flex justify-center text-sm font-medium">
+<span class="bg-white dark:bg-background-dark px-4 text-[#4c739a]">Or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 rounded-lg border border-[#cfdbe7] dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+<svg class="h-5 w-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-semibold text-[#0d141b] dark:text-white" href="#">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 rounded-lg border border-[#cfdbe7] dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+<svg class="h-5 w-5 text-[#0077b5]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+</svg>
+<span class="text-sm font-semibold text-[#0d141b] dark:text-white" href="#">LinkedIn</span>
+</button>
+</div>
+<!-- Footer Link -->
+<p class="mt-10 text-center text-sm text-[#4c739a] dark:text-slate-400">
+                    Don't have an account? 
+                    <a class="font-bold text-primary hover:underline" href="#">Sign Up</a>
+</p>
+</div>
+<!-- Simple Footer Info -->
+<div class="mt-auto pt-8 flex justify-center gap-6 text-xs text-[#4c739a] opacity-60">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+<a href="#">Help Center</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Setup - SkillSwap</title>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .bg-gradient-mesh {
+            background: linear-gradient(135deg, #137fec15 0%, #14b8a610 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden bg-gradient-mesh">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">SkillSwap</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">How it Works</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Default user avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrXhmzW5Mta8ANc9OdX0vhqKLFD3nX7L26JTWGg9hOytC00K5FP_VdgEyOUS1ux3XCDg_ZfpUMG5sWnLDrV23ih-fjcWdiVattrGGvXkj_nXwlGV9i8n9lb_LvhaaqcMiYzmRJqr1JubHbNpxkBcH78eU-OZKrjnnhkVgQFlXVrUrabqnuzDGWTWLnB4DADquqE9qD2RJMGh7BayXqPEgsDDhXh5PWtmtCM890m1TIRjri_is-TpcvYgIKyM5s9hjPwWqzKB6fkZto");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 justify-center py-12 px-4">
+<div class="layout-content-container flex flex-col max-w-[640px] flex-1">
+<!-- Onboarding Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-8 md:p-12">
+<!-- Progress Bar -->
+<div class="mb-10">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold text-primary">Profile 70% Complete</span>
+<span class="text-xs text-slate-500">Almost there!</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 70%"></div>
+</div>
+</div>
+<!-- Headline -->
+<div class="text-center mb-10">
+<h1 class="text-slate-900 dark:text-white text-3xl font-extrabold tracking-tight mb-2">Complete Your Profile</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base">Let's get you ready to share and learn new skills.</p>
+</div>
+<!-- Profile Photo Uploader -->
+<div class="flex justify-center mb-10">
+<div class="relative group cursor-pointer">
+<div class="bg-slate-100 dark:bg-slate-800 bg-center bg-no-repeat aspect-square bg-cover rounded-full size-32 border-4 border-white dark:border-slate-900 shadow-md transition-transform group-hover:scale-105" data-alt="Profile photo upload area with initials" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAu3JmQu-L4L_kpCAe4taCR3AHEROG_zeouYtYojy_16j4Whm2WYPNxOMUWqqoXuUJzxgTlVCSneVgyuP2zR24OX8W-9mEtri_mYr4rvFrf872r1_pksOmzoAe8f8ERlAHLq0tqDcb8st-7vZ-3oVTNpszTvzI1_ruN3WwOW6icVSD-vNkjl_7_S9GNrmUduBoO3q5phe-aILNClO3zTYlwY7sM1co3ljl599IP7k_7pF9M5--xsv5VRV0mmTbtvy8kCCU18Rmi3ym6");'></div>
+<div class="absolute bottom-1 right-1 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">add_a_photo</span>
+</div>
+</div>
+</div>
+<!-- Form Fields -->
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-semibold">Full Name</label>
+<input class="form-input rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary/20 h-12 px-4 text-sm" placeholder="e.g. Alex Rivera" type="text" value="Alex Rivera"/>
+</div>
+<!-- Age -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-semibold">Age</label>
+<input class="form-input rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary/20 h-12 px-4 text-sm" placeholder="25" type="number" value="28"/>
+</div>
+</div>
+<!-- LinkedIn URL -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-semibold flex items-center gap-2">
+                                LinkedIn URL
+                                <span class="material-symbols-outlined text-xs text-slate-400">info</span>
+</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-lg">link</span>
+<input class="form-input w-full rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary/20 h-12 pl-12 pr-4 text-sm" placeholder="https://linkedin.com/in/username" type="url"/>
+</div>
+</div>
+<!-- Bio -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-semibold">Bio</label>
+<textarea class="form-input rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-primary focus:ring-primary/20 p-4 text-sm resize-none" placeholder="Tell us about yourself and your passions..." rows="3"></textarea>
+<p class="text-[11px] text-slate-400 text-right">0 / 250 characters</p>
+</div>
+<!-- Skills You Can Teach -->
+<div class="flex flex-col gap-3">
+<label class="text-slate-900 dark:text-white text-sm font-semibold">Skills You Can Teach</label>
+<div class="flex flex-wrap gap-2 p-3 min-h-[50px] rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<span class="inline-flex items-center gap-1.5 bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-medium">
+                                    Graphic Design
+                                    <button class="material-symbols-outlined text-xs hover:text-white/70" type="button">close</button>
+</span>
+<span class="inline-flex items-center gap-1.5 bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-medium">
+                                    Public Speaking
+                                    <button class="material-symbols-outlined text-xs hover:text-white/70" type="button">close</button>
+</span>
+<input class="flex-1 min-w-[120px] bg-transparent border-none focus:ring-0 text-sm p-0 text-slate-600 dark:text-slate-300" placeholder="Add a skill..." type="text"/>
+</div>
+</div>
+<!-- Skills You Want to Learn -->
+<div class="flex flex-col gap-3">
+<label class="text-slate-900 dark:text-white text-sm font-semibold">Skills You Want to Learn</label>
+<div class="flex flex-wrap gap-2 p-3 min-h-[50px] rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<span class="inline-flex items-center gap-1.5 bg-teal-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium">
+                                    Python
+                                    <button class="material-symbols-outlined text-xs hover:text-white/70" type="button">close</button>
+</span>
+<input class="flex-1 min-w-[120px] bg-transparent border-none focus:ring-0 text-sm p-0 text-slate-600 dark:text-slate-300" placeholder="Add a skill..." type="text"/>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="pt-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2 group" type="button">
+                                Save &amp; Continue
+                                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="w-full mt-4 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white text-sm font-medium transition-colors" type="button">
+                                Skip for now
+                            </button>
+</div>
+</form>
+</div>
+<!-- Helper Text Footer -->
+<p class="text-center text-slate-500 dark:text-slate-400 text-sm mt-8">
+                    Your information is secure. You can update these settings anytime from your dashboard.
+                </p>
+</div>
+</main>
+<!-- Decorative background elements -->
+<div class="fixed -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="fixed -bottom-24 -right-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+</div>
+</body></html>
