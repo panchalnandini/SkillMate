@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillMate AI Engine</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      /* Header Section */
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 32px;
+        color: #4f46e5;
+        margin-bottom: 10px;
+      }
+      .header p {
+        color: #94a3b8;
+      }
+
+      /* The "Current User" Card */
+      .user-request {
+        background: #1e293b;
+        border: 1px solid #334155;
+        padding: 20px 40px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        background: #6366f1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      /* Action Button */
+      .scan-btn {
+        background: #4f46e5;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .scan-btn:hover {
+        background: #4338ca;
+        transform: scale(1.05);
+      }
+      .scan-btn:disabled {
+        background: #334155;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Loading Animation */
+      .loader {
+        display: none;
+        margin: 40px;
+        border: 4px solid #1e293b;
+        border-top: 4px solid #4f46e5;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Results Grid */
+      .results-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      /* Match Card */
+      .match-card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        padding: 20px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      .match-card.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .profile-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .profile-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #334155;
+      }
+
+      .stats {
+        display: flex;
+        gap: 15px;
+        font-size: 12px;
+        color: #94a3b8;
+        margin-top: 5px;
+      }
+      .stat-badge {
+        background: #0f172a;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid #334155;
+      }
+
+      /* Percentage Ring */
+      .score-box {
+        position: relative;
+        width: 60px;
+        height: 60px;
+      }
+      .score-box svg {
+        transform: rotate(-90deg);
+        width: 60px;
+        height: 60px;
+      }
+      .score-box circle {
+        fill: none;
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+      .score-bg {
+        stroke: #334155;
+      }
+      .score-val {
+        stroke-dasharray: 157;
+        stroke-dashoffset: 157;
+        transition: stroke-dashoffset 1s ease;
+      }
+      .score-num {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      /* Style for the Send Request Button */
+      .connect-btn {
+        background: transparent;
+        border: 1px solid #4f46e5;
+        color: #4f46e5;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        margin-top: 10px;
+        width: 100%;
+      }
+      .connect-btn:hover {
+        background: #4f46e5;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>SkillMate Match Engine</h1>
+      <p>Real-time Logistic Regression Matchmaking</p>
+    </div>
+
+    <div class="user-request">
+      <div class="user-avatar">ME</div>
+      <div>
+        <h3 style="margin: 0">My Request</h3>
+        <span style="color: #94a3b8; font-size: 14px"
+          >Looking to learn <b>React</b> • Can teach <b>Python</b></span
+        >
+      </div>
+    </div>
+
+    <button class="scan-btn" onclick="findMatches()" id="btn-scan">
+      <span class="material-icons">radar</span> Run AI Match
+    </button>
+
+    <div class="loader" id="loader"></div>
+
+    <div class="results-container" id="results"></div>
+
+    <script>
+      // --- 1. HARDCODED "REAL" DATA (Frontend) ---
+      const mockDatabase = [
+        {
+          name: "Sarah Jenkins",
+          role: "Frontend Dev",
+          image: "https://randomuser.me/api/portraits/women/44.jpg",
+          features: { skill_match: 0.9, availability: 0.8, trust_score: 0.9 },
+        },
+        {
+          name: "David Chen",
+          role: "Full Stack Engineer",
+          image: "https://randomuser.me/api/portraits/men/32.jpg",
+          features: { skill_match: 0.8, availability: 0.5, trust_score: 0.8 },
+        },
+        {
+          name: "Emily Davis",
+          role: "Student",
+          image: "https://randomuser.me/api/portraits/women/65.jpg",
+          features: { skill_match: 0.6, availability: 0.9, trust_score: 0.4 },
+        },
+        {
+          name: "Michael Ross",
+          role: "Backend Dev",
+          image: "https://randomuser.me/api/portraits/men/85.jpg",
+          features: { skill_match: 0.2, availability: 0.1, trust_score: 0.5 },
+        },
+      ];
+
+      // --- 2. CONNECT TO PYTHON BACKEND ---
+      async function getRealMatchScore(skill, avail, trust) {
+        try {
+          // Call the Python API running on localhost
+          const response = await fetch("http://127.0.0.1:5000/predict_match", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              skill_match: skill,
+              availability: avail,
+              trust_score: trust,
+            }),
+          });
+
+          const data = await response.json();
+          return data.match_percentage; // The Real AI Score from Python
+        } catch (error) {
+          console.error("Server Error - Is app.py running?", error);
+          return 0; // Return 0 if server is down so app doesn't crash
+        }
+      }
+
+      // --- 3. THE DEMO LOOP ---
+      async function findMatches() {
+        const btn = document.getElementById("btn-scan");
+        const loader = document.getElementById("loader");
+        const container = document.getElementById("results");
+
+        // Reset UI
+        container.innerHTML = "";
+        btn.disabled = true;
+        btn.innerHTML = "Contacting AI Server...";
+        loader.style.display = "block";
+
+        // Loop through users
+        for (const [index, user] of mockDatabase.entries()) {
+          // CALL THE PYTHON API HERE
+          const score = await getRealMatchScore(
+            user.features.skill_match,
+            user.features.availability,
+            user.features.trust_score,
+          );
+
+          // Determine Color based on Score
+          let color = "#ef4444";
+          if (score > 75) color = "#10b981";
+          else if (score > 50) color = "#f59e0b";
+
+          // Create Card HTML
+          // Create Card HTML
+          const card = document.createElement("div");
+          card.className = "match-card";
+          card.innerHTML = `
+    <div style="flex: 1;">
+        <div class="profile-info">
+            <img src="${user.image}" class="profile-img">
+            <div>
+                <h3 style="margin:0; font-size:18px;">${user.name}</h3>
+                <div style="color:#94a3b8; font-size:14px;">${user.role}</div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <span class="stat-badge">Skill Match: ${user.features.skill_match}</span>
+            <span class="stat-badge">Trust: ${user.features.trust_score}</span>
+        </div>
+
+        <button class="connect-btn" onclick="goToLogin()">
+            Send Request
+        </button>
+    </div>
+
+    <div class="score-box">
+        <svg>
+            <circle cx="30" cy="30" r="25" class="score-bg"></circle>
+            <circle cx="30" cy="30" r="25" class="score-val" 
+                style="stroke:${color}; stroke-dashoffset: ${157 - (157 * score) / 100}"></circle>
+        </svg>
+        <div class="score-num" style="color:${color}">${score}%</div>
+    </div>
+`;
+
+          container.appendChild(card);
+
+          // Animation: Show card with slight delay
+          setTimeout(() => card.classList.add("show"), 100);
+        }
+
+        // Finish Loading
+        loader.style.display = "none";
+        btn.disabled = false;
+        btn.innerHTML =
+          '<span class="material-icons">radar</span> Run AI Match';
+      }
+
+      // Redirect to Login Page
+      function goToLogin() {
+        // You can add a simulated "Sending..." alert if you want
+        alert("To send a request, you must login first.");
+        window.location.href = "loginfinal.html";
+      }
+    </script>
+  </body>
+</html>

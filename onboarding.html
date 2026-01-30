@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to SkillMate - Setup Profile</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        /* 🎨 THEME COLORS */
+        --primary-color: #4f46e5;
+        --primary-hover: #4338ca;
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --input-bg: #0f172a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .onboarding-card {
+        background: var(--card-bg);
+        width: 100%;
+        max-width: 600px;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-color);
+        text-align: center;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        gap: 10px;
+      }
+      .step-dot {
+        height: 8px;
+        width: 8px;
+        background-color: var(--border-color);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      .step-dot.active {
+        background-color: var(--primary-color);
+        width: 30px; /* Longer active dot */
+        border-radius: 10px;
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      p {
+        color: var(--text-muted);
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      /* Inputs (Name/Email) */
+      .input-group {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        background-color: var(--input-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 15px;
+        color: var(--text-main);
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      }
+
+      /* Skill & Lang Grid */
+      .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      .tag-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        padding: 12px 24px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .tag-item:hover {
+        border-color: var(--primary-color);
+        background: rgba(79, 70, 229, 0.1);
+      }
+
+      .tag-item.selected {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+      }
+
+      /* Buttons */
+      .btn-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        padding: 14px 32px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+        border: none;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+        width: 100%;
+      }
+      .btn-primary:hover {
+        background: var(--primary-hover);
+      }
+
+      .btn-back {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid transparent;
+        margin-right: 10px;
+      }
+      .btn-back:hover {
+        color: var(--text-main);
+      }
+
+      /* Animation */
+      .step-section {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .step-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="onboarding-card">
+      <div class="progress-container">
+        <div class="step-dot active" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+        <div class="step-dot" id="dot-3"></div>
+        <div class="step-dot" id="dot-4"></div>
+      </div>
+
+      <form id="onboardingForm" action="match_engine.html">
+        <div class="step-section active" id="step-1">
+          <span
+            class="material-icons"
+            style="
+              font-size: 48px;
+              color: var(--primary-color);
+              margin-bottom: 15px;
+            "
+            >person_add</span
+          >
+          <h2>Let's get to know you</h2>
+          <p>We need your details to create your profile.</p>
+
+          <div class="input-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              name="fullname"
+              placeholder="e.g. John Doe"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="changeStep(1, 2)"
+          >
+            Continue
+          </button>
+        </div>
+
+        <div class="step-section" id="step-2">
+          <span
+            class="material-icons"
+            style="font-size: 48px; color: #ec4899; margin-bottom: 15px"
+            >favorite</span
+          >
+          <h2>What interests you?</h2>
+          <p>Select topics you want to learn about.</p>
+
+          <div class="grid-container" id="interest-grid"></div>
+
+          <div class="btn-container">
+            <button
+              type="button"
+              class="btn btn-back"
+              onclick="changeStep(2, 1)"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="changeStep(2, 3)"
+              style="flex: 1"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+
+        <div class="step-section" id="step-3">
+          <span
+            class="material-icons"
+            style="font-size: 48px; color: #10b981; margin-bottom: 15px"
+            >psychology</span
+          >
+          <h2>Your Expertise</h2>
+          <p>What skills can you share with others?</p>
+
+          <div class="grid-container" id="skills-grid"></div>
+
+          <div class="btn-container">
+            <button
+              type="button"
+              class="btn btn-back"
+              onclick="changeStep(3, 2)"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="changeStep(3, 4)"
+              style="flex: 1"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+
+        <div class="step-section" id="step-4">
+          <span
+            class="material-icons"
+            style="font-size: 48px; color: #f59e0b; margin-bottom: 15px"
+            >translate</span
+          >
+          <h2>Preferred Language</h2>
+          <p>Which language are you comfortable with?</p>
+
+          <div class="grid-container" id="lang-grid"></div>
+
+          <div class="btn-container">
+            <button
+              type="button"
+              class="btn btn-back"
+              onclick="changeStep(4, 3)"
+            >
+              Back
+            </button>
+            <button type="submit" class="btn btn-primary" style="flex: 1">
+              Finish Setup
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // --- DATA ---
+      const interests = [
+        "Web Dev",
+        "App Dev",
+        "UI/UX",
+        "AI/ML",
+        "Data Science",
+        "Marketing",
+        "Cybersecurity",
+        "Blockchain",
+      ];
+
+      const skills = [
+        "HTML/CSS",
+        "JavaScript",
+        "Python",
+        "Java",
+        "React",
+        "Node.js",
+        "Figma",
+        "SQL",
+        "C++",
+      ];
+
+      const languages = [
+        "English",
+        "Hindi",
+        "Spanish",
+        "French",
+        "German",
+        "Mandarin",
+        "Japanese",
+        "Arabic",
+      ];
+
+      // --- FUNCTIONS ---
+
+      function createTags(containerId, dataArray, inputName) {
+        const container = document.getElementById(containerId);
+        dataArray.forEach((item) => {
+          const tag = document.createElement("div");
+          tag.className = "tag-item";
+          tag.innerHTML = `<span>${item}</span>`;
+          tag.onclick = () => {
+            tag.classList.toggle("selected");
+            console.log(`Updated ${inputName}: ${item}`);
+          };
+          container.appendChild(tag);
+        });
+      }
+
+      // Initialize Grids
+      createTags("interest-grid", interests, "interest");
+      createTags("skills-grid", skills, "skill");
+      createTags("lang-grid", languages, "language");
+
+      // Navigation Logic
+      function changeStep(current, next) {
+        // Validation for Step 1 (Optional but recommended)
+        if (current === 1 && next === 2) {
+          const name = document.querySelector('input[name="fullname"]').value;
+          const email = document.querySelector('input[name="email"]').value;
+          if (!name || !email) {
+            alert("Please fill in your details.");
+            return;
+          }
+        }
+
+        // Hide Current
+        document.getElementById(`step-${current}`).classList.remove("active");
+        document.getElementById(`dot-${current}`).classList.remove("active");
+
+        // Show Next
+        document.getElementById(`step-${next}`).classList.add("active");
+        document.getElementById(`dot-${next}`).classList.add("active");
+      }
+    </script>
+  </body>
+</html>

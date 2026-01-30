@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Demo - SkillMate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* The Card */
+        .match-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 30px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #4F46E5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h2 { margin-bottom: 5px; }
+        .role { color: #94a3b8; margin-bottom: 25px; }
+
+        /* The Algorithm Visualizer */
+        .algo-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .slider-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: #4F46E5;
+        }
+
+        /* Match Score Indicator */
+        .score-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-top: 10px;
+        }
+
+        svg { transform: rotate(-90deg); width: 120px; height: 120px; }
+        
+        circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+
+        .circle-bg { stroke: #334155; }
+        .circle-progress { 
+            stroke: #10b981; 
+            stroke-dasharray: 283; /* 2 * pi * r (r=45) */
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .badge {
+            margin-top: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: #334155;
+            color: #cbd5e1;
+        }
+
+        .judge-note {
+            margin-top: 30px;
+            color: #64748b;
+            font-size: 14px;
+            max-width: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="match-card">
+        <div class="avatar">JD</div>
+        <h2>John Doe</h2>
+        <div class="role">Python Expert looking for React</div>
+
+        <div class="algo-box">
+            <div class="slider-group">
+                <label>Skill Relevance (Feature 1) <span id="val-1">1.0</span></label>
+                <input type="range" min="0" max="1" step="0.1" value="1.0" oninput="updateScore()" id="input-skill">
+            </div>
+
+            <div class="slider-group">
+                <label>Availability (Feature 2) <span id="val-2">0.8</span></label>
+                <input type="range" min="0" max="1" step="0.1" value="0.8" oninput="updateScore()" id="input-avail">
+            </div>
+
+            <div class="slider-group">
+                <label>Trust Score (Feature 3) <span id="val-3">0.9</span></label>
+                <input type="range" min="0" max="1" step="0.1" value="0.9" oninput="updateScore()" id="input-trust">
+            </div>
+        </div>
+
+        <div class="score-circle">
+            <svg>
+                <circle cx="60" cy="60" r="45" class="circle-bg"></circle>
+                <circle cx="60" cy="60" r="45" class="circle-progress" id="progress-ring"></circle>
+            </svg>
+            <div class="score-text" id="score-text">0%</div>
+        </div>
+        <div class="badge">AI MATCH PROBABILITY</div>
+    </div>
+
+    <p class="judge-note">
+        *Drag the sliders to see how the Logistic Regression model recalculates match probability in real-time.
+    </p>
+
+    <script>
+        // JS Simulation of your Python Logistic Regression
+        // Z = b0 + b1*x1 + b2*x2 + b3*x3
+        // Sigmoid = 1 / (1 + e^-z)
+
+        function sigmoid(z) {
+            return 1 / (1 + Math.exp(-z));
+        }
+
+        function updateScore() {
+            // 1. Get Inputs (Features)
+            let skill = parseFloat(document.getElementById('input-skill').value);
+            let avail = parseFloat(document.getElementById('input-avail').value);
+            let trust = parseFloat(document.getElementById('input-trust').value);
+
+            // Update Labels
+            document.getElementById('val-1').innerText = skill;
+            document.getElementById('val-2').innerText = avail;
+            document.getElementById('val-3').innerText = trust;
+
+            // 2. The "Weights" (Simulating your trained model)
+            // In a real app, these come from model.coef_
+            let w_skill = 2.5;  // Skill is very important
+            let w_avail = 1.2;  // Availability matters
+            let w_trust = 1.8;  // Trust is crucial
+            let bias = -2.5;    // Baseline bias
+
+            // 3. Calculate Z
+            let z = (skill * w_skill) + (avail * w_avail) + (trust * w_trust) + bias;
+
+            // 4. Calculate Probability
+            let probability = sigmoid(z);
+            let percentage = Math.round(probability * 100);
+
+            // 5. Update UI
+            document.getElementById('score-text').innerText = percentage + "%";
+            
+            // Update Ring Stroke (283 is full circumference)
+            let offset = 283 - (283 * probability);
+            document.getElementById('progress-ring').style.strokeDashoffset = offset;
+
+            // Change color based on score
+            let ring = document.getElementById('progress-ring');
+            if(percentage > 75) ring.style.stroke = "#10b981"; // Green
+            else if(percentage > 50) ring.style.stroke = "#f59e0b"; // Orange
+            else ring.style.stroke = "#ef4444"; // Red
+        }
+
+        // Initialize
+        updateScore();
+    </script>
+
+</body>
+</html>
