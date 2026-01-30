@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -215,4 +215,649 @@
 
 
 
+
+ -->
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillMate Networking Matches</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#011637",
+              secondary: "#364156",
+              "accent-light": "#DFF8EB",
+              "accent-dark": "#122B1D",
+              "text-muted": "#CDCDCD",
+              "background-light": "#f5f7f8",
+              "background-dark": "#011638",
+              "slate-blue": "#475569",
+              "deep-green": "#059669",
+            },
+            fontFamily: {
+              display: ["Lexend"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      body {
+        font-family: "Lexend", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .sidebar-active {
+        background-color: #364156;
+        color: #dff8eb;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #364156;
+        border-radius: 10px;
+      }
+      .swipe-card-gradient {
+        background: linear-gradient(
+          180deg,
+          rgba(1, 22, 56, 0) 0%,
+          rgba(1, 22, 56, 0.9) 100%
+        );
+      }
+
+      /* --- ANIMATION CLASSES --- */
+      .card-idle {
+        transition:
+          transform 0.3s ease-out,
+          box-shadow 0.3s ease;
+      }
+
+      .card-moving {
+        transition: none;
+        cursor: grabbing;
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.5),
+          0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+
+      .fly-out-right {
+        transform: translate(150%, 50px) rotate(30deg) !important;
+        opacity: 0;
+        transition:
+          transform 0.4s ease-in,
+          opacity 0.4s ease-in;
+        pointer-events: none;
+      }
+
+      .fly-out-left {
+        transform: translate(-150%, 50px) rotate(-30deg) !important;
+        opacity: 0;
+        transition:
+          transform 0.4s ease-in,
+          opacity 0.4s ease-in;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-background-dark text-slate-900 dark:text-white antialiased">
+    <div class="flex h-screen overflow-hidden">
+      <aside
+        class="w-64 flex-shrink-0 bg-primary border-r border-secondary/30 hidden md:flex flex-col"
+      >
+        <div class="p-6 flex items-center gap-3">
+          <div class="size-8 text-accent-light">
+            <svg
+              fill="none"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <h1 class="text-xl font-bold tracking-tight text-white">SkillMate</h1>
+        </div>
+        <nav class="flex-1 px-4 space-y-2 mt-4">
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="dashboard.html"
+          >
+            <span class="material-symbols-outlined">dashboard</span> Dashboard
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="chat.html"
+          >
+            <span class="material-symbols-outlined">chat</span> Chat
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="community.html"
+          >
+            <span class="material-symbols-outlined">groups</span> Community
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="calender.html"
+          >
+            <span class="material-symbols-outlined">calendar_today</span>
+            Calendar
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="trending.html"
+          >
+            <span class="material-symbols-outlined">trending_up</span> Trending
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active text-sm font-medium"
+            href="if matched.html"
+          >
+            <span class="material-symbols-outlined">handshake</span> Matches
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-secondary/20 transition-colors text-sm font-medium"
+            href="meeting.html"
+          >
+            <span class="material-symbols-outlined">videocam</span> Meeting
+          </a>
+        </nav>
+        <div class="p-4 space-y-4">
+          <!-- <button
+            class="w-full bg-accent-dark border border-accent-light/20 text-accent-light py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-accent-dark/80 transition-all"
+          >
+            <span class="material-symbols-outlined text-[20px]"
+              >play_circle</span
+            >
+            Start Lesson
+          </button> -->
+          <div class="pt-4 border-t border-secondary/30">
+            <div
+              class="flex items-center gap-3 px-4 py-2 text-text-muted text-sm cursor-pointer hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">settings</span> Settings
+            </div>
+            <div
+              class="flex items-center gap-3 px-4 py-2 text-red-400 text-sm cursor-pointer hover:text-red-300 transition-colors"
+            >
+              <span class="material-symbols-outlined">logout</span> Logout
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="flex-1 flex flex-col overflow-hidden relative">
+        <header
+          class="h-16 flex items-center justify-between px-8 bg-background-dark border-b border-secondary/20 z-20 relative"
+        >
+          <div class="flex-1 max-w-xl">
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
+                >search</span
+              >
+              <input
+                class="w-full bg-secondary/20 border-none rounded-xl pl-10 pr-4 py-2 focus:ring-2 focus:ring-accent-light/30 text-sm"
+                placeholder="Search courses, mentors, or topics..."
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <div
+              class="flex items-center gap-3 pl-4 border-l border-secondary/20"
+            >
+              <div class="text-right hidden sm:block">
+                <p class="text-sm font-semibold">Rohan Sharma</p>
+                <p class="text-xs text-text-muted leading-none">Pro Learner</p>
+              </div>
+              <a href="profile2.html">
+                <div
+                  class="size-10 rounded-full bg-center bg-cover border-2 border-accent-light/30"
+                  style="
+                    background-image: url(&quot;https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&quot;);
+                  "
+                ></div>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <div
+          class="flex-1 overflow-y-auto p-8 custom-scrollbar flex flex-col items-center"
+        >
+          <div class="max-w-4xl w-full text-center mb-8">
+            <h2 class="text-3xl font-black tracking-tight text-white">
+              Networking Matches
+            </h2>
+            <p class="text-text-muted mt-2">
+              Connect with top mentors and peers based on your skill goals
+            </p>
+          </div>
+
+          <div class="relative w-full max-w-md h-[550px] group">
+            <div
+              class="absolute inset-x-4 -bottom-4 h-full bg-primary/40 border border-secondary/20 rounded-3xl -z-10 transform scale-95 opacity-50"
+            ></div>
+            <div
+              class="absolute inset-x-2 -bottom-2 h-full bg-primary/60 border border-secondary/20 rounded-3xl -z-10 transform scale-98 opacity-70"
+            ></div>
+
+            <div id="card-stack" class="relative h-full w-full">
+              <div
+                id="empty-state"
+                class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-primary border-2 border-secondary/30 rounded-3xl z-0 hidden"
+              >
+                <div
+                  class="size-20 bg-secondary/20 rounded-full flex items-center justify-center mb-4"
+                >
+                  <span
+                    class="material-symbols-outlined text-4xl text-text-muted"
+                    >checklist</span
+                  >
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">
+                  You're all caught up!
+                </h3>
+                <p class="text-text-muted mb-6">
+                  No more matches in your area right now.
+                </p>
+                <button
+                  onclick="location.reload()"
+                  class="bg-accent-light text-primary font-bold py-3 px-6 rounded-xl hover:bg-white transition-colors"
+                >
+                  Reload Profiles
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-10 mt-12 mb-8">
+            <button
+              id="btn-pass"
+              class="size-16 rounded-full bg-slate-blue/10 border-2 border-slate-blue text-slate-blue flex items-center justify-center hover:bg-slate-blue hover:text-white transition-all transform active:scale-90 group z-10"
+            >
+              <span class="material-symbols-outlined text-4xl font-bold"
+                >close</span
+              >
+            </button>
+            <button
+              class="size-10 rounded-full border border-secondary/30 text-text-muted flex items-center justify-center hover:bg-secondary/30 hover:text-white transition-all z-10"
+            >
+              <span class="material-symbols-outlined text-xl">info</span>
+            </button>
+            <button
+              id="btn-like"
+              class="size-16 rounded-full bg-deep-green/10 border-2 border-deep-green text-deep-green flex items-center justify-center hover:bg-deep-green hover:text-white transition-all transform active:scale-90 group shadow-[0_0_20px_rgba(5,150,105,0.2)] z-10"
+            >
+              <span class="material-symbols-outlined text-4xl font-bold"
+                >favorite</span
+              >
+            </button>
+          </div>
+          <p
+            class="text-text-muted/50 text-xs font-medium uppercase tracking-[0.2em]"
+          >
+            Use Mouse/Touch to Swipe or Keys
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // --- 1. DATA: 15 UNIQUE PROFILES ---
+      const profiles = [
+        {
+          name: "Aarav Gupta",
+          age: 29,
+          location: "Tokyo / Remote",
+          role: "AI Researcher",
+          match: 99,
+          tags: ["PyTorch", "LLMs", "Neural Networks"],
+          bio: "Researching efficiency in large language models. Looking for frontend devs.",
+          img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80",
+        },
+        {
+          name: "Aanya Pate",
+          age: 26,
+          location: "Madrid, Spain",
+          role: "Frontend Lead",
+          match: 94,
+          tags: ["Vue.js", "Tailwind", "Animation"],
+          bio: "Obsessed with buttery smooth UI interactions at 60fps.",
+          img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
+        },
+        {
+          name: "Vivaan Mehta",
+          age: 32,
+          location: "Chicago, IL",
+          role: "Cybersecurity",
+          match: 88,
+          tags: ["Pen Testing", "Python", "Network Sec"],
+          bio: "White hat hacker. I break into systems to tell you how to fix them.",
+          img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80",
+        },
+        {
+          name: "Anaya Shah",
+          age: 24,
+          location: "Singapore",
+          role: "Blockchain Dev",
+          match: 91,
+          tags: ["Solidity", "Rust", "DeFi"],
+          bio: "Building the future of decentralized finance.",
+          img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80",
+        },
+        {
+          name: "Arjun Verma",
+          age: 28,
+          location: "Dublin, Ireland",
+          role: "DevOps Engineer",
+          match: 85,
+          tags: ["AWS", "Terraform", "CI/CD"],
+          bio: "Automating everything. If I have to do it twice, I write a script.",
+          img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+        },
+        {
+          name: "Kavya Joshi",
+          age: 25,
+          location: "Mumbai, India",
+          role: "UX Researcher",
+          match: 96,
+          tags: ["Figma", "Psychology", "Wireframing"],
+          bio: "Design is not just how it looks, it's how it works.",
+          img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
+        },
+        {
+          name: "Rohan Malhotra",
+          age: 30,
+          location: "Berlin, Germany",
+          role: "Backend Dev",
+          match: 82,
+          tags: ["GoLang", "Microservices", "Kafka"],
+          bio: "Building high-throughput systems for payment gateways.",
+          img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+        },
+        {
+          name: "Isha Desai",
+          age: 27,
+          location: "Paris, France",
+          role: "Mobile Dev",
+          match: 89,
+          tags: ["Swift", "iOS", "SwiftUI"],
+          bio: "Creating native experiences that feel magical on iPhone.",
+          img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
+        },
+        {
+          name: "Aditya Singh",
+          age: 31,
+          location: "Austin, Texas",
+          role: "Product Manager",
+          match: 93,
+          tags: ["Agile", "Strategy", "SQL"],
+          bio: "Turning chaos into roadmaps. I help teams build the right thing.",
+          img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80",
+        },
+        {
+          name: "Nisha Gupta",
+          age: 23,
+          location: "Dubai, UAE",
+          role: "Marketing Tech",
+          match: 87,
+          tags: ["SEO", "Growth", "Analytics"],
+          bio: "Bridging the gap between marketing creativity and tech.",
+          img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80",
+        },
+        {
+          name: "Karan Khanna",
+          age: 22,
+          location: "Seoul, Korea",
+          role: "Game Dev",
+          match: 84,
+          tags: ["Unity", "C#", "Shaders"],
+          bio: "Indie game dev working on a rogue-like platformer.",
+          img: "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=800&q=80",
+        },
+        {
+          name: "Pooja Agarwal",
+          age: 29,
+          location: "London, UK",
+          role: "Data Scientist",
+          match: 95,
+          tags: ["Python", "TensorFlow", "Pandas"],
+          bio: "Finding the signal in the noise. Analyzing climate datasets.",
+          img: "https://images.unsplash.com/photo-1554151228-14d9def656ec?w=800&q=80",
+        },
+        {
+          name: "Rahul Mishra",
+          age: 33,
+          location: "Bangalore, India",
+          role: "Cloud Architect",
+          match: 90,
+          tags: ["Azure", "Kubernetes", "Security"],
+          bio: "Helping enterprises migrate to the cloud without going broke.",
+          img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80",
+        },
+        {
+          name: "Sneha Iyer",
+          age: 25,
+          location: "Boston, MA",
+          role: "Bioinformatics",
+          match: 86,
+          tags: ["R", "Genomics", "Python"],
+          bio: "Writing code to cure diseases. Biology x CS.",
+          img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80",
+        },
+        {
+          name: "Sarthak Kulkarni",
+          age: 27,
+          location: "Atlanta, GA",
+          role: "Full Stack",
+          match: 97,
+          tags: ["MERN", "GraphQL", "Next.js"],
+          bio: "Javascript everywhere. Building scalable web apps.",
+          img: "https://images.unsplash.com/photo-1522075469751-3a3694c60e9e?w=800&q=80",
+        },
+      ];
+
+      // --- 2. LOGIC SETUP ---
+      const stackContainer = document.getElementById("card-stack");
+      const emptyState = document.getElementById("empty-state");
+      const likeBtn = document.getElementById("btn-like");
+      const passBtn = document.getElementById("btn-pass");
+
+      // Render Cards
+      function renderCards() {
+        stackContainer.innerHTML = "";
+        stackContainer.appendChild(emptyState);
+
+        // We loop backwards: i = 14 -> 0
+        // We append them to the DOM in that order.
+        // Result in DOM: [EmptyState, Profile 14, Profile 13, ..., Profile 0]
+        // The LAST element in the DOM is visually on TOP (Standard HTML behavior)
+        // So Profile 0 (Hiro) will be the last child, and thus the top card.
+
+        for (let i = profiles.length - 1; i >= 0; i--) {
+          const p = profiles[i];
+          const card = document.createElement("div");
+
+          card.className =
+            "card-stack-item absolute top-0 left-0 w-full h-full bg-primary border-2 border-secondary/30 rounded-3xl shadow-2xl overflow-hidden flex flex-col card-idle cursor-grab select-none";
+
+          // Z-Index:
+          // We want Profile 0 (Last rendered) to have HIGHEST Z-Index.
+          // We want Profile 14 (First rendered) to have LOWEST Z-Index.
+          // Formula: Total - CurrentIndex.
+          // i=0 -> zIndex = 15 (Top)
+          // i=14 -> zIndex = 1 (Bottom)
+          card.style.zIndex = profiles.length - i;
+
+          const tagsHtml = p.tags
+            .map(
+              (tag) =>
+                `<span class="bg-secondary/30 px-3 py-1 rounded-lg text-xs font-semibold text-white">${tag}</span>`,
+            )
+            .join("");
+
+          card.innerHTML = `
+            <div class="h-3/5 relative pointer-events-none">
+                <img alt="${p.name}" class="w-full h-full object-cover" src="${p.img}"/>
+                <div class="absolute inset-0 swipe-card-gradient"></div>
+                <div class="absolute bottom-4 left-6 right-6">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-accent-light text-primary text-[10px] font-black px-2 py-0.5 rounded-full uppercase">${p.role}</span>
+                        <span class="bg-deep-green text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase">${p.match}% Match</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white leading-tight">${p.name}, ${p.age}</h3>
+                    <p class="text-accent-light font-medium flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        ${p.location}
+                    </p>
+                </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between bg-primary pointer-events-none">
+                <div>
+                    <p class="text-text-muted text-sm font-medium mb-3">EXPERTISE</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        ${tagsHtml}
+                    </div>
+                    <p class="text-sm text-text-muted leading-relaxed line-clamp-3">
+                        ${p.bio}
+                    </p>
+                </div>
+            </div>
+        `;
+          stackContainer.appendChild(card);
+        }
+      }
+
+      renderCards();
+
+      // --- 3. SELECTION & SWIPE ---
+
+      // Get the card that is visually on top (Highest Z-Index / Last Child)
+      function getTopCard() {
+        const cards = Array.from(
+          stackContainer.querySelectorAll(".card-stack-item"),
+        );
+        // The loop appends items. The last item appended (Profile 0) is the last child.
+        // It also has the highest Z-index.
+        return cards.length > 0 ? cards[cards.length - 1] : null;
+      }
+
+      function handleSwipeChoice(direction) {
+        const card = getTopCard();
+        if (!card) return;
+
+        if (direction === "right") {
+          card.classList.add("fly-out-right");
+        } else {
+          card.classList.add("fly-out-left");
+        }
+
+        setTimeout(() => {
+          card.remove();
+          checkEmpty();
+        }, 300);
+      }
+
+      function checkEmpty() {
+        const cards = stackContainer.querySelectorAll(".card-stack-item");
+        if (cards.length === 0) {
+          emptyState.classList.remove("hidden");
+        }
+      }
+
+      likeBtn.addEventListener("click", () => handleSwipeChoice("right"));
+      passBtn.addEventListener("click", () => handleSwipeChoice("left"));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") handleSwipeChoice("right");
+        if (e.key === "ArrowLeft") handleSwipeChoice("left");
+      });
+
+      // --- DRAG PHYSICS ---
+      let isDragging = false;
+      let startX = 0;
+      let currentCard = null;
+
+      const startDrag = (e) => {
+        currentCard = getTopCard();
+        if (!currentCard) return;
+        isDragging = true;
+        startX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        currentCard.classList.remove("card-idle");
+        currentCard.classList.add("card-moving");
+      };
+
+      const moveDrag = (e) => {
+        if (!isDragging || !currentCard) return;
+        e.preventDefault();
+        const currentX = e.type.includes("mouse")
+          ? e.clientX
+          : e.touches[0].clientX;
+        const diff = currentX - startX;
+        const rotation = diff * 0.05;
+        currentCard.style.transform = `translate(${diff}px, 0px) rotate(${rotation}deg)`;
+      };
+
+      const endDrag = (e) => {
+        if (!isDragging || !currentCard) return;
+        isDragging = false;
+        const endX = e.type.includes("mouse")
+          ? e.clientX
+          : e.changedTouches[0].clientX;
+        const diff = endX - startX;
+
+        if (Math.abs(diff) > 100) {
+          handleSwipeChoice(diff > 0 ? "right" : "left");
+        } else {
+          currentCard.classList.remove("card-moving");
+          currentCard.classList.add("card-idle");
+          currentCard.style.transform = "";
+        }
+        currentCard = null;
+      };
+
+      stackContainer.addEventListener("mousedown", startDrag);
+      stackContainer.addEventListener("touchstart", startDrag);
+      document.addEventListener("mousemove", moveDrag);
+      document.addEventListener("touchmove", moveDrag, { passive: false });
+      document.addEventListener("mouseup", endDrag);
+      document.addEventListener("touchend", endDrag);
+    </script>
+  </body>
+</html>
 
